@@ -18,9 +18,19 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    DKMainViewController *mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController" bundle:nil];
+    self.window.rootViewController = mainController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+	[VKSdk processOpenURL:url fromApplication:sourceApplication];
+	
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

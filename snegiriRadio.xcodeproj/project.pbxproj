@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB27B7E2540472AB48167A0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 897A2C67FADA45B5A4AC747A /* libPods.a */; };
 		32F88A161885583A005020DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A151885583A005020DA /* Foundation.framework */; };
 		32F88A181885583A005020DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A171885583A005020DA /* CoreGraphics.framework */; };
 		32F88A1A1885583A005020DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A191885583A005020DA /* UIKit.framework */; };
@@ -22,6 +23,8 @@
 		32F88A371885583B005020DA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A1B1885583A005020DA /* CoreData.framework */; };
 		32F88A3F1885583B005020DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32F88A3D1885583B005020DA /* InfoPlist.strings */; };
 		32F88A411885583B005020DA /* snegiriRadioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F88A401885583B005020DA /* snegiriRadioTests.m */; };
+		32F88A4D18856B1B005020DA /* DKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F88A4B18856B1B005020DA /* DKMainViewController.m */; };
+		32F88A4E18856B1C005020DA /* DKMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F88A4C18856B1B005020DA /* DKMainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		32F88A3C1885583B005020DA /* snegiriRadioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "snegiriRadioTests-Info.plist"; sourceTree = "<group>"; };
 		32F88A3E1885583B005020DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32F88A401885583B005020DA /* snegiriRadioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snegiriRadioTests.m; sourceTree = "<group>"; };
+		32F88A4A18856B1B005020DA /* DKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMainViewController.h; sourceTree = "<group>"; };
+		32F88A4B18856B1B005020DA /* DKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMainViewController.m; sourceTree = "<group>"; };
+		32F88A4C18856B1B005020DA /* DKMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMainViewController.xib; sourceTree = "<group>"; };
+		897A2C67FADA45B5A4AC747A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2FAEC280AB94E1BA1BC948F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 				32F88A1C1885583A005020DA /* CoreData.framework in Frameworks */,
 				32F88A1A1885583A005020DA /* UIKit.framework in Frameworks */,
 				32F88A161885583A005020DA /* Foundation.framework in Frameworks */,
+				2FB27B7E2540472AB48167A0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +97,7 @@
 				32F88A3A1885583B005020DA /* snegiriRadioTests */,
 				32F88A141885583A005020DA /* Frameworks */,
 				32F88A131885583A005020DA /* Products */,
+				A2FAEC280AB94E1BA1BC948F /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +118,7 @@
 				32F88A191885583A005020DA /* UIKit.framework */,
 				32F88A1B1885583A005020DA /* CoreData.framework */,
 				32F88A331885583B005020DA /* XCTest.framework */,
+				897A2C67FADA45B5A4AC747A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,6 +130,9 @@
 				32F88A271885583B005020DA /* DKAppDelegate.m */,
 				32F88A2C1885583B005020DA /* Images.xcassets */,
 				32F88A291885583B005020DA /* snegiriRadio.xcdatamodeld */,
+				32F88A4A18856B1B005020DA /* DKMainViewController.h */,
+				32F88A4B18856B1B005020DA /* DKMainViewController.m */,
+				32F88A4C18856B1B005020DA /* DKMainViewController.xib */,
 				32F88A1E1885583A005020DA /* Supporting Files */,
 			);
 			path = snegiriRadio;
@@ -160,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32F88A441885583B005020DA /* Build configuration list for PBXNativeTarget "snegiriRadio" */;
 			buildPhases = (
+				0EF945BDADB645A6A8BF935C /* Check Pods Manifest.lock */,
 				32F88A0E1885583A005020DA /* Sources */,
 				32F88A0F1885583A005020DA /* Frameworks */,
 				32F88A101885583A005020DA /* Resources */,
+				3B0BDFB41D714633B85AD8ED /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F88A221885583A005020DA /* InfoPlist.strings in Resources */,
+				32F88A4E18856B1C005020DA /* DKMainViewController.xib in Resources */,
 				32F88A2D1885583B005020DA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,11 +261,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0EF945BDADB645A6A8BF935C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3B0BDFB41D714633B85AD8ED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		32F88A0E1885583A005020DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32F88A4D18856B1B005020DA /* DKMainViewController.m in Sources */,
 				32F88A241885583A005020DA /* main.m in Sources */,
 				32F88A281885583B005020DA /* DKAppDelegate.m in Sources */,
 				32F88A2B1885583B005020DA /* snegiriRadio.xcdatamodeld in Sources */,
@@ -369,6 +420,7 @@
 		};
 		32F88A451885583B005020DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2FAEC280AB94E1BA1BC948F /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -382,6 +434,7 @@
 		};
 		32F88A461885583B005020DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2FAEC280AB94E1BA1BC948F /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -454,6 +507,7 @@
 				32F88A461885583B005020DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32F88A471885583B005020DA /* Build configuration list for PBXNativeTarget "snegiriRadioTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +516,7 @@
 				32F88A491885583B005020DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
