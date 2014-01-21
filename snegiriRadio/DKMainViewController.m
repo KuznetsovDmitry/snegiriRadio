@@ -107,5 +107,8 @@ static NSString *const APP_ID = @"4119359";
         [error.request repeat];
     }];
     [self.loadingIndicator stopAnimating];
+    [self.artistTitle setText:[NSString stringWithFormat:@"Снегири"]];
+    [self.trackTitle setText:[NSString stringWithFormat:@"Space"]];
+   // [[self title] setText:[NSString stringWithFormat:@"\u0414\u0435\u043a\u0430\u0431\u0440\u044f"]];
 }
 @end

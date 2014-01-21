@@ -18,7 +18,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    DKMainViewController *mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController" bundle:nil];
+//    DKMainViewController *mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone_white" bundle:nil];
+    DKMainViewController *mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone_black" bundle:nil];
     self.window.rootViewController = mainController;
     
     self.window.backgroundColor = [UIColor whiteColor];

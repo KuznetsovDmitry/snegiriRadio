@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2FB27B7E2540472AB48167A0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 897A2C67FADA45B5A4AC747A /* libPods.a */; };
+		328F0AEC188EDB5E004234C4 /* play ipad black.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AE8188EDB5E004234C4 /* play ipad black.png */; };
+		328F0AED188EDB5E004234C4 /* play ipad white.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AE9188EDB5E004234C4 /* play ipad white.png */; };
+		328F0AEE188EDB5E004234C4 /* play iphone black.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AEA188EDB5E004234C4 /* play iphone black.png */; };
+		328F0AEF188EDB5E004234C4 /* play iphone white.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AEB188EDB5E004234C4 /* play iphone white.png */; };
+		328F0AF1188EE22E004234C4 /* DKMainViewController_iPhone_black.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */; };
 		32F88A161885583A005020DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A151885583A005020DA /* Foundation.framework */; };
 		32F88A181885583A005020DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A171885583A005020DA /* CoreGraphics.framework */; };
 		32F88A1A1885583A005020DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A191885583A005020DA /* UIKit.framework */; };
@@ -24,7 +29,7 @@
 		32F88A3F1885583B005020DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32F88A3D1885583B005020DA /* InfoPlist.strings */; };
 		32F88A411885583B005020DA /* snegiriRadioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F88A401885583B005020DA /* snegiriRadioTests.m */; };
 		32F88A4D18856B1B005020DA /* DKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F88A4B18856B1B005020DA /* DKMainViewController.m */; };
-		32F88A4E18856B1C005020DA /* DKMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F88A4C18856B1B005020DA /* DKMainViewController.xib */; };
+		32F88A4E18856B1C005020DA /* DKMainViewController_iPhone_white.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F88A4C18856B1B005020DA /* DKMainViewController_iPhone_white.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		328F0AE8188EDB5E004234C4 /* play ipad black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play ipad black.png"; sourceTree = "<group>"; };
+		328F0AE9188EDB5E004234C4 /* play ipad white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play ipad white.png"; sourceTree = "<group>"; };
+		328F0AEA188EDB5E004234C4 /* play iphone black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play iphone black.png"; sourceTree = "<group>"; };
+		328F0AEB188EDB5E004234C4 /* play iphone white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play iphone white.png"; sourceTree = "<group>"; };
+		328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMainViewController_iPhone_black.xib; sourceTree = "<group>"; };
 		32F88A121885583A005020DA /* snegiriRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snegiriRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F88A151885583A005020DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32F88A171885583A005020DA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,7 +68,7 @@
 		32F88A401885583B005020DA /* snegiriRadioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snegiriRadioTests.m; sourceTree = "<group>"; };
 		32F88A4A18856B1B005020DA /* DKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMainViewController.h; sourceTree = "<group>"; };
 		32F88A4B18856B1B005020DA /* DKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMainViewController.m; sourceTree = "<group>"; };
-		32F88A4C18856B1B005020DA /* DKMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMainViewController.xib; sourceTree = "<group>"; };
+		32F88A4C18856B1B005020DA /* DKMainViewController_iPhone_white.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMainViewController_iPhone_white.xib; sourceTree = "<group>"; };
 		897A2C67FADA45B5A4AC747A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FAEC280AB94E1BA1BC948F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,9 +100,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		328F0AE6188EDB5E004234C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				328F0AE7188EDB5E004234C4 /* images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		328F0AE7188EDB5E004234C4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				328F0AE8188EDB5E004234C4 /* play ipad black.png */,
+				328F0AE9188EDB5E004234C4 /* play ipad white.png */,
+				328F0AEA188EDB5E004234C4 /* play iphone black.png */,
+				328F0AEB188EDB5E004234C4 /* play iphone white.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		32F88A091885583A005020DA = {
 			isa = PBXGroup;
 			children = (
+				328F0AE6188EDB5E004234C4 /* Resources */,
 				32F88A1D1885583A005020DA /* snegiriRadio */,
 				32F88A3A1885583B005020DA /* snegiriRadioTests */,
 				32F88A141885583A005020DA /* Frameworks */,
@@ -126,13 +156,14 @@
 		32F88A1D1885583A005020DA /* snegiriRadio */ = {
 			isa = PBXGroup;
 			children = (
+				328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */,
 				32F88A261885583A005020DA /* DKAppDelegate.h */,
 				32F88A271885583B005020DA /* DKAppDelegate.m */,
 				32F88A2C1885583B005020DA /* Images.xcassets */,
 				32F88A291885583B005020DA /* snegiriRadio.xcdatamodeld */,
 				32F88A4A18856B1B005020DA /* DKMainViewController.h */,
 				32F88A4B18856B1B005020DA /* DKMainViewController.m */,
-				32F88A4C18856B1B005020DA /* DKMainViewController.xib */,
+				32F88A4C18856B1B005020DA /* DKMainViewController_iPhone_white.xib */,
 				32F88A1E1885583A005020DA /* Supporting Files */,
 			);
 			path = snegiriRadio;
@@ -246,8 +277,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F88A221885583A005020DA /* InfoPlist.strings in Resources */,
-				32F88A4E18856B1C005020DA /* DKMainViewController.xib in Resources */,
+				32F88A4E18856B1C005020DA /* DKMainViewController_iPhone_white.xib in Resources */,
+				328F0AEE188EDB5E004234C4 /* play iphone black.png in Resources */,
+				328F0AED188EDB5E004234C4 /* play ipad white.png in Resources */,
 				32F88A2D1885583B005020DA /* Images.xcassets in Resources */,
+				328F0AEC188EDB5E004234C4 /* play ipad black.png in Resources */,
+				328F0AEF188EDB5E004234C4 /* play iphone white.png in Resources */,
+				328F0AF1188EE22E004234C4 /* DKMainViewController_iPhone_black.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

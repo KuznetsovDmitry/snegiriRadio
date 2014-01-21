@@ -1,0 +1,5 @@
+#include "Pods-VK-ios-sdk.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/VK-ios-sdk" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/VK-ios-sdk"
+OTHER_LDFLAGS = -ObjC ${PODS_VK_IOS_SDK_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}

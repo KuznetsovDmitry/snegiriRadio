@@ -11,5 +11,8 @@
 
 @interface DKMainViewController : UIViewController <VKSdkDelegate>
 
+@property (retain, nonatomic) IBOutlet UILabel *trackTitle;
+@property (retain, nonatomic) IBOutlet UILabel *artistTitle;
+
 - (IBAction)getMusic:(id)sender;
 @end
