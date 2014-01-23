@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Kuznetsov Dmitry. All rights reserved.
 //
 
+#import <VKSdk.h>
 #import "DKAppDelegate.h"
+#import "DKColorViewController.h"
 
 @implementation DKAppDelegate
 
@@ -17,12 +19,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    DKMainViewController *mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone_white" bundle:nil];
-    DKMainViewController *mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone_black" bundle:nil];
-    self.window.rootViewController = mainController;
+
+    DKColorViewController *colorController;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        colorController = [[DKColorViewController alloc] initWithNibName:@"DKColorViewController_iPhone" bundle:nil];
+    } else {
+        //iPad
+    }
     
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = colorController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

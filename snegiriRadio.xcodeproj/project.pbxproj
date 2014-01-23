@@ -13,6 +13,15 @@
 		328F0AEE188EDB5E004234C4 /* play iphone black.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AEA188EDB5E004234C4 /* play iphone black.png */; };
 		328F0AEF188EDB5E004234C4 /* play iphone white.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AEB188EDB5E004234C4 /* play iphone white.png */; };
 		328F0AF1188EE22E004234C4 /* DKMainViewController_iPhone_black.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */; };
+		328F0AF518901933004234C4 /* DKColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328F0AF318901933004234C4 /* DKColorViewController.m */; };
+		328F0AF618901933004234C4 /* DKColorViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AF418901933004234C4 /* DKColorViewController_iPhone.xib */; };
+		328F0AFA18901AA8004234C4 /* color black iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AF718901AA8004234C4 /* color black iphone.png */; };
+		328F0AFC18901AA8004234C4 /* color white iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AF918901AA8004234C4 /* color white iphone.png */; };
+		328F0AFF1890261C004234C4 /* snegiriWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AFD1890261C004234C4 /* snegiriWhite.png */; };
+		328F0B001890261C004234C4 /* snegitiBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 328F0AFE1890261C004234C4 /* snegitiBlack.png */; };
+		328F0B0418902DC7004234C4 /* DKAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328F0B0218902DC7004234C4 /* DKAboutViewController.m */; };
+		328F0B0B18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0B0A18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib */; };
+		328F0B0D189036C3004234C4 /* DKAboutViewController_iPhone_white.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0B0C189036C3004234C4 /* DKAboutViewController_iPhone_white.xib */; };
 		32F88A161885583A005020DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A151885583A005020DA /* Foundation.framework */; };
 		32F88A181885583A005020DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A171885583A005020DA /* CoreGraphics.framework */; };
 		32F88A1A1885583A005020DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A191885583A005020DA /* UIKit.framework */; };
@@ -48,6 +57,17 @@
 		328F0AEA188EDB5E004234C4 /* play iphone black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play iphone black.png"; sourceTree = "<group>"; };
 		328F0AEB188EDB5E004234C4 /* play iphone white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play iphone white.png"; sourceTree = "<group>"; };
 		328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKMainViewController_iPhone_black.xib; sourceTree = "<group>"; };
+		328F0AF218901933004234C4 /* DKColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKColorViewController.h; sourceTree = "<group>"; };
+		328F0AF318901933004234C4 /* DKColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKColorViewController.m; sourceTree = "<group>"; };
+		328F0AF418901933004234C4 /* DKColorViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKColorViewController_iPhone.xib; sourceTree = "<group>"; };
+		328F0AF718901AA8004234C4 /* color black iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color black iphone.png"; sourceTree = "<group>"; };
+		328F0AF918901AA8004234C4 /* color white iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color white iphone.png"; sourceTree = "<group>"; };
+		328F0AFD1890261C004234C4 /* snegiriWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snegiriWhite.png; sourceTree = "<group>"; };
+		328F0AFE1890261C004234C4 /* snegitiBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snegitiBlack.png; sourceTree = "<group>"; };
+		328F0B0118902DC7004234C4 /* DKAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKAboutViewController.h; sourceTree = "<group>"; };
+		328F0B0218902DC7004234C4 /* DKAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKAboutViewController.m; sourceTree = "<group>"; };
+		328F0B0A18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKAboutViewController_iPhone_black.xib; sourceTree = "<group>"; };
+		328F0B0C189036C3004234C4 /* DKAboutViewController_iPhone_white.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKAboutViewController_iPhone_white.xib; sourceTree = "<group>"; };
 		32F88A121885583A005020DA /* snegiriRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snegiriRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F88A151885583A005020DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32F88A171885583A005020DA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,6 +131,10 @@
 		328F0AE7188EDB5E004234C4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				328F0AFD1890261C004234C4 /* snegiriWhite.png */,
+				328F0AFE1890261C004234C4 /* snegitiBlack.png */,
+				328F0AF718901AA8004234C4 /* color black iphone.png */,
+				328F0AF918901AA8004234C4 /* color white iphone.png */,
 				328F0AE8188EDB5E004234C4 /* play ipad black.png */,
 				328F0AE9188EDB5E004234C4 /* play ipad white.png */,
 				328F0AEA188EDB5E004234C4 /* play iphone black.png */,
@@ -156,15 +180,22 @@
 		32F88A1D1885583A005020DA /* snegiriRadio */ = {
 			isa = PBXGroup;
 			children = (
+				328F0AF418901933004234C4 /* DKColorViewController_iPhone.xib */,
+				328F0B0A18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib */,
+				328F0B0C189036C3004234C4 /* DKAboutViewController_iPhone_white.xib */,
 				328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */,
+				32F88A4C18856B1B005020DA /* DKMainViewController_iPhone_white.xib */,
 				32F88A261885583A005020DA /* DKAppDelegate.h */,
 				32F88A271885583B005020DA /* DKAppDelegate.m */,
 				32F88A2C1885583B005020DA /* Images.xcassets */,
 				32F88A291885583B005020DA /* snegiriRadio.xcdatamodeld */,
 				32F88A4A18856B1B005020DA /* DKMainViewController.h */,
 				32F88A4B18856B1B005020DA /* DKMainViewController.m */,
-				32F88A4C18856B1B005020DA /* DKMainViewController_iPhone_white.xib */,
+				328F0AF218901933004234C4 /* DKColorViewController.h */,
+				328F0AF318901933004234C4 /* DKColorViewController.m */,
 				32F88A1E1885583A005020DA /* Supporting Files */,
+				328F0B0118902DC7004234C4 /* DKAboutViewController.h */,
+				328F0B0218902DC7004234C4 /* DKAboutViewController.m */,
 			);
 			path = snegiriRadio;
 			sourceTree = "<group>";
@@ -276,12 +307,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328F0B0D189036C3004234C4 /* DKAboutViewController_iPhone_white.xib in Resources */,
+				328F0AFC18901AA8004234C4 /* color white iphone.png in Resources */,
+				328F0AFA18901AA8004234C4 /* color black iphone.png in Resources */,
+				328F0AFF1890261C004234C4 /* snegiriWhite.png in Resources */,
 				32F88A221885583A005020DA /* InfoPlist.strings in Resources */,
 				32F88A4E18856B1C005020DA /* DKMainViewController_iPhone_white.xib in Resources */,
 				328F0AEE188EDB5E004234C4 /* play iphone black.png in Resources */,
 				328F0AED188EDB5E004234C4 /* play ipad white.png in Resources */,
+				328F0B001890261C004234C4 /* snegitiBlack.png in Resources */,
+				328F0B0B18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib in Resources */,
 				32F88A2D1885583B005020DA /* Images.xcassets in Resources */,
 				328F0AEC188EDB5E004234C4 /* play ipad black.png in Resources */,
+				328F0AF618901933004234C4 /* DKColorViewController_iPhone.xib in Resources */,
 				328F0AEF188EDB5E004234C4 /* play iphone white.png in Resources */,
 				328F0AF1188EE22E004234C4 /* DKMainViewController_iPhone_black.xib in Resources */,
 			);
@@ -336,8 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F88A4D18856B1B005020DA /* DKMainViewController.m in Sources */,
+				328F0B0418902DC7004234C4 /* DKAboutViewController.m in Sources */,
 				32F88A241885583A005020DA /* main.m in Sources */,
 				32F88A281885583B005020DA /* DKAppDelegate.m in Sources */,
+				328F0AF518901933004234C4 /* DKColorViewController.m in Sources */,
 				32F88A2B1885583B005020DA /* snegiriRadio.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@ static NSString *const APP_ID = @"4119359";
 
 @interface DKMainViewController ()
 - (void)authorize;
+- (IBAction)showAbout:(id)sender;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @end
 
@@ -47,6 +48,27 @@ static NSString *const APP_ID = @"4119359";
     [VKSdk authorize:@[VK_PER_AUDIO] revokeAccess:YES];
 }
 
+- (IBAction)showAbout:(id)sender {
+    DKAboutViewController *aboutController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        if ([self isWhite]) {
+            aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPhone_white" bundle:nil];
+        } else {
+           aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPhone_black" bundle:nil];
+        }
+    } else {
+        //iPad
+    }
+
+    aboutController.delegate = self;
+	
+	aboutController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:aboutController animated:YES completion:nil];
+}
+
+- (void)aboutViewControllerDidFinish:(DKAboutViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -102,11 +124,12 @@ static NSString *const APP_ID = @"4119359";
     [self.loadingIndicator startAnimating];
     [request executeWithResultBlock:^(VKResponse * response) {
         NSLog(@"Json result: %@", response.json);
+        [self.loadingIndicator stopAnimating];
     } errorBlock:^(VKError *error) {
         NSLog(@"ERROR CODE: %d", error.errorCode);
         [error.request repeat];
     }];
-    [self.loadingIndicator stopAnimating];
+    
     [self.artistTitle setText:[NSString stringWithFormat:@"Снегири"]];
     [self.trackTitle setText:[NSString stringWithFormat:@"Space"]];
    // [[self title] setText:[NSString stringWithFormat:@"\u0414\u0435\u043a\u0430\u0431\u0440\u044f"]];

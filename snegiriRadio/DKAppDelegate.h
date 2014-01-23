@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <VKSdk.h>
-#import "DKMainViewController.h"
 
 @interface DKAppDelegate : UIResponder <UIApplicationDelegate>
 
