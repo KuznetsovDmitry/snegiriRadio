@@ -44,7 +44,10 @@
             [self.fbButton setImage:[UIImage imageNamed:@"facebook_iphone_black.png"] forState:UIControlStateNormal];
             [self.instaButton setImage:[UIImage imageNamed:@"instagram_iphone_black.png"] forState:UIControlStateNormal];
         } else {
-            //IPad
+            self.logo.image = [UIImage imageNamed:@"logo_white_iPad.png"];
+            [self.vkButton setImage:[UIImage imageNamed:@"vk_iPad_black.png"] forState:UIControlStateNormal];
+            [self.fbButton setImage:[UIImage imageNamed:@"facebook_iPad_black.png"] forState:UIControlStateNormal];
+            [self.instaButton setImage:[UIImage imageNamed:@"instagram_iPad_black.png"] forState:UIControlStateNormal];
         }
     }
 }

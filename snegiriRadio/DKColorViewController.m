@@ -43,7 +43,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone" bundle:nil];
     } else {
-        //iPad
+        mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPad" bundle:nil];
     }
     
     mainController.color = color;

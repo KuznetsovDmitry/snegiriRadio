@@ -90,7 +90,9 @@ static NSString *const APP_ID = @"4119359";
             
             [self.aboutButton setImage:[UIImage imageNamed:@"logo_about_white.png"] forState:UIControlStateNormal];
         } else {
-            //IPad
+            [self.playButton setImage:[UIImage imageNamed:@"play_ipad_black.png"] forState:UIControlStateNormal];
+            
+            [self.aboutButton setImage:[UIImage imageNamed:@"logo_about_white_iPad.png"] forState:UIControlStateNormal];
         }
     }
     
@@ -149,7 +151,7 @@ static NSString *const APP_ID = @"4119359";
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPhone" bundle:nil];
     } else {
-        //iPad
+        aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPad" bundle:nil];
     }
 
     aboutController.delegate = self;

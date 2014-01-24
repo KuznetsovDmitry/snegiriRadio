@@ -25,7 +25,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         colorController = [[DKColorViewController alloc] initWithNibName:@"DKColorViewController_iPhone" bundle:nil];
     } else {
-        //iPad
+        colorController = [[DKColorViewController alloc] initWithNibName:@"DKColorViewController_iPad" bundle:nil];
     }
     
     self.window.rootViewController = colorController;
