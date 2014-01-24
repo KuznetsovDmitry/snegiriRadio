@@ -39,4 +39,16 @@
 	[[self delegate] aboutViewControllerDidFinish:self];
 }
 
+- (IBAction)vkButtonPressed:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://vk.com/snegiri_rock"]];
+}
+
+- (IBAction)fbButtonPressed:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/snegiri.radio"]];
+}
+
+- (IBAction)instaButtonPressed:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://instagram.com/snegiri_rock"]];
+}
+
 @end

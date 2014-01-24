@@ -9,8 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <VKSdk.h>
 #import "DKAboutViewController.h"
+#import "NCMusicEngine.h"
 
 @interface DKMainViewController : UIViewController <VKSdkDelegate, DKAboutViewControllerDelegate>
+
+//-----------------------------------------------------
+@property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
+@property (nonatomic, strong) NCMusicEngine *player;
+
+-(void)updateTitle:(NSString*)title;
+
+
+//-----------------------------------------------------
+
+@property (strong) NSArray *musicList;
 
 @property (retain, nonatomic) IBOutlet UILabel *trackTitle;
 @property (retain, nonatomic) IBOutlet UILabel *artistTitle;

@@ -22,6 +22,24 @@
 		328F0B0418902DC7004234C4 /* DKAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328F0B0218902DC7004234C4 /* DKAboutViewController.m */; };
 		328F0B0B18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0B0A18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib */; };
 		328F0B0D189036C3004234C4 /* DKAboutViewController_iPhone_white.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328F0B0C189036C3004234C4 /* DKAboutViewController_iPhone_white.xib */; };
+		32B1F81718909CA40051C3DF /* facebook iphone black copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B1F81118909CA40051C3DF /* facebook iphone black copy.png */; };
+		32B1F81818909CA40051C3DF /* facebook iphone white copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B1F81218909CA40051C3DF /* facebook iphone white copy.png */; };
+		32B1F81918909CA40051C3DF /* instagram iphone  black.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B1F81318909CA40051C3DF /* instagram iphone  black.png */; };
+		32B1F81A18909CA40051C3DF /* instagram iphone white.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B1F81418909CA40051C3DF /* instagram iphone white.png */; };
+		32B1F81B18909CA40051C3DF /* vk iphone black.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B1F81518909CA40051C3DF /* vk iphone black.png */; };
+		32B1F81C18909CA40051C3DF /* vk iphone white.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B1F81618909CA40051C3DF /* vk iphone white.png */; };
+		32B1F82A1891D2D60051C3DF /* NCMusicEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8291891D2D60051C3DF /* NCMusicEngine.m */; };
+		32B1F8421891D4350051C3DF /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F82D1891D4350051C3DF /* AFDownloadRequestOperation.m */; };
+		32B1F8431891D4350051C3DF /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8301891D4350051C3DF /* AFHTTPClient.m */; };
+		32B1F8441891D4350051C3DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8321891D4350051C3DF /* AFHTTPRequestOperation.m */; };
+		32B1F8451891D4350051C3DF /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8341891D4350051C3DF /* AFImageRequestOperation.m */; };
+		32B1F8461891D4350051C3DF /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8361891D4350051C3DF /* AFJSONRequestOperation.m */; };
+		32B1F8471891D4350051C3DF /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8381891D4350051C3DF /* AFNetworkActivityIndicatorManager.m */; };
+		32B1F8481891D4350051C3DF /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F83B1891D4350051C3DF /* AFPropertyListRequestOperation.m */; };
+		32B1F8491891D4350051C3DF /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F83D1891D4350051C3DF /* AFURLConnectionOperation.m */; };
+		32B1F84A1891D4350051C3DF /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F83F1891D4350051C3DF /* AFXMLRequestOperation.m */; };
+		32B1F84B1891D4350051C3DF /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B1F8411891D4350051C3DF /* UIImageView+AFNetworking.m */; };
+		32B1F84D1891FB1F0051C3DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B1F84C1891FB1F0051C3DF /* SystemConfiguration.framework */; };
 		32F88A161885583A005020DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A151885583A005020DA /* Foundation.framework */; };
 		32F88A181885583A005020DA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A171885583A005020DA /* CoreGraphics.framework */; };
 		32F88A1A1885583A005020DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F88A191885583A005020DA /* UIKit.framework */; };
@@ -68,6 +86,36 @@
 		328F0B0218902DC7004234C4 /* DKAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKAboutViewController.m; sourceTree = "<group>"; };
 		328F0B0A18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKAboutViewController_iPhone_black.xib; sourceTree = "<group>"; };
 		328F0B0C189036C3004234C4 /* DKAboutViewController_iPhone_white.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DKAboutViewController_iPhone_white.xib; sourceTree = "<group>"; };
+		32B1F81118909CA40051C3DF /* facebook iphone black copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook iphone black copy.png"; sourceTree = "<group>"; };
+		32B1F81218909CA40051C3DF /* facebook iphone white copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook iphone white copy.png"; sourceTree = "<group>"; };
+		32B1F81318909CA40051C3DF /* instagram iphone  black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram iphone  black.png"; sourceTree = "<group>"; };
+		32B1F81418909CA40051C3DF /* instagram iphone white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram iphone white.png"; sourceTree = "<group>"; };
+		32B1F81518909CA40051C3DF /* vk iphone black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vk iphone black.png"; sourceTree = "<group>"; };
+		32B1F81618909CA40051C3DF /* vk iphone white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vk iphone white.png"; sourceTree = "<group>"; };
+		32B1F8281891D2D60051C3DF /* NCMusicEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMusicEngine.h; sourceTree = "<group>"; };
+		32B1F8291891D2D60051C3DF /* NCMusicEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCMusicEngine.m; sourceTree = "<group>"; };
+		32B1F82C1891D4350051C3DF /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
+		32B1F82D1891D4350051C3DF /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		32B1F82F1891D4350051C3DF /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		32B1F8301891D4350051C3DF /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		32B1F8311891D4350051C3DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		32B1F8321891D4350051C3DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		32B1F8331891D4350051C3DF /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		32B1F8341891D4350051C3DF /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		32B1F8351891D4350051C3DF /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		32B1F8361891D4350051C3DF /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		32B1F8371891D4350051C3DF /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		32B1F8381891D4350051C3DF /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		32B1F8391891D4350051C3DF /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		32B1F83A1891D4350051C3DF /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		32B1F83B1891D4350051C3DF /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		32B1F83C1891D4350051C3DF /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		32B1F83D1891D4350051C3DF /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		32B1F83E1891D4350051C3DF /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		32B1F83F1891D4350051C3DF /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		32B1F8401891D4350051C3DF /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		32B1F8411891D4350051C3DF /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		32B1F84C1891FB1F0051C3DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		32F88A121885583A005020DA /* snegiriRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = snegiriRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F88A151885583A005020DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32F88A171885583A005020DA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B1F84D1891FB1F0051C3DF /* SystemConfiguration.framework in Frameworks */,
 				32F88A181885583A005020DA /* CoreGraphics.framework in Frameworks */,
 				32F88A1C1885583A005020DA /* CoreData.framework in Frameworks */,
 				32F88A1A1885583A005020DA /* UIKit.framework in Frameworks */,
@@ -131,6 +180,12 @@
 		328F0AE7188EDB5E004234C4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				32B1F81118909CA40051C3DF /* facebook iphone black copy.png */,
+				32B1F81218909CA40051C3DF /* facebook iphone white copy.png */,
+				32B1F81318909CA40051C3DF /* instagram iphone  black.png */,
+				32B1F81418909CA40051C3DF /* instagram iphone white.png */,
+				32B1F81518909CA40051C3DF /* vk iphone black.png */,
+				32B1F81618909CA40051C3DF /* vk iphone white.png */,
 				328F0AFD1890261C004234C4 /* snegiriWhite.png */,
 				328F0AFE1890261C004234C4 /* snegitiBlack.png */,
 				328F0AF718901AA8004234C4 /* color black iphone.png */,
@@ -141,6 +196,50 @@
 				328F0AEB188EDB5E004234C4 /* play iphone white.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		32B1F8271891D2D60051C3DF /* NCMusicEngine */ = {
+			isa = PBXGroup;
+			children = (
+				32B1F8281891D2D60051C3DF /* NCMusicEngine.h */,
+				32B1F8291891D2D60051C3DF /* NCMusicEngine.m */,
+			);
+			path = NCMusicEngine;
+			sourceTree = "<group>";
+		};
+		32B1F82B1891D4350051C3DF /* AFDownloadRequestOperation */ = {
+			isa = PBXGroup;
+			children = (
+				32B1F82C1891D4350051C3DF /* AFDownloadRequestOperation.h */,
+				32B1F82D1891D4350051C3DF /* AFDownloadRequestOperation.m */,
+			);
+			path = AFDownloadRequestOperation;
+			sourceTree = "<group>";
+		};
+		32B1F82E1891D4350051C3DF /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				32B1F82F1891D4350051C3DF /* AFHTTPClient.h */,
+				32B1F8301891D4350051C3DF /* AFHTTPClient.m */,
+				32B1F8311891D4350051C3DF /* AFHTTPRequestOperation.h */,
+				32B1F8321891D4350051C3DF /* AFHTTPRequestOperation.m */,
+				32B1F8331891D4350051C3DF /* AFImageRequestOperation.h */,
+				32B1F8341891D4350051C3DF /* AFImageRequestOperation.m */,
+				32B1F8351891D4350051C3DF /* AFJSONRequestOperation.h */,
+				32B1F8361891D4350051C3DF /* AFJSONRequestOperation.m */,
+				32B1F8371891D4350051C3DF /* AFNetworkActivityIndicatorManager.h */,
+				32B1F8381891D4350051C3DF /* AFNetworkActivityIndicatorManager.m */,
+				32B1F8391891D4350051C3DF /* AFNetworking.h */,
+				32B1F83A1891D4350051C3DF /* AFPropertyListRequestOperation.h */,
+				32B1F83B1891D4350051C3DF /* AFPropertyListRequestOperation.m */,
+				32B1F83C1891D4350051C3DF /* AFURLConnectionOperation.h */,
+				32B1F83D1891D4350051C3DF /* AFURLConnectionOperation.m */,
+				32B1F83E1891D4350051C3DF /* AFXMLRequestOperation.h */,
+				32B1F83F1891D4350051C3DF /* AFXMLRequestOperation.m */,
+				32B1F8401891D4350051C3DF /* UIImageView+AFNetworking.h */,
+				32B1F8411891D4350051C3DF /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 		32F88A091885583A005020DA = {
@@ -167,6 +266,7 @@
 		32F88A141885583A005020DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32B1F84C1891FB1F0051C3DF /* SystemConfiguration.framework */,
 				32F88A151885583A005020DA /* Foundation.framework */,
 				32F88A171885583A005020DA /* CoreGraphics.framework */,
 				32F88A191885583A005020DA /* UIKit.framework */,
@@ -180,22 +280,25 @@
 		32F88A1D1885583A005020DA /* snegiriRadio */ = {
 			isa = PBXGroup;
 			children = (
+				32B1F82B1891D4350051C3DF /* AFDownloadRequestOperation */,
+				32B1F82E1891D4350051C3DF /* AFNetworking */,
+				32B1F8271891D2D60051C3DF /* NCMusicEngine */,
 				328F0AF418901933004234C4 /* DKColorViewController_iPhone.xib */,
+				328F0AF218901933004234C4 /* DKColorViewController.h */,
+				328F0AF318901933004234C4 /* DKColorViewController.m */,
 				328F0B0A18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib */,
 				328F0B0C189036C3004234C4 /* DKAboutViewController_iPhone_white.xib */,
+				328F0B0118902DC7004234C4 /* DKAboutViewController.h */,
+				328F0B0218902DC7004234C4 /* DKAboutViewController.m */,
 				328F0AF0188EE22E004234C4 /* DKMainViewController_iPhone_black.xib */,
 				32F88A4C18856B1B005020DA /* DKMainViewController_iPhone_white.xib */,
+				32F88A4A18856B1B005020DA /* DKMainViewController.h */,
+				32F88A4B18856B1B005020DA /* DKMainViewController.m */,
 				32F88A261885583A005020DA /* DKAppDelegate.h */,
 				32F88A271885583B005020DA /* DKAppDelegate.m */,
 				32F88A2C1885583B005020DA /* Images.xcassets */,
 				32F88A291885583B005020DA /* snegiriRadio.xcdatamodeld */,
-				32F88A4A18856B1B005020DA /* DKMainViewController.h */,
-				32F88A4B18856B1B005020DA /* DKMainViewController.m */,
-				328F0AF218901933004234C4 /* DKColorViewController.h */,
-				328F0AF318901933004234C4 /* DKColorViewController.m */,
 				32F88A1E1885583A005020DA /* Supporting Files */,
-				328F0B0118902DC7004234C4 /* DKAboutViewController.h */,
-				328F0B0218902DC7004234C4 /* DKAboutViewController.m */,
 			);
 			path = snegiriRadio;
 			sourceTree = "<group>";
@@ -279,6 +382,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Kuznetsov Dmitry";
 				TargetAttributes = {
+					32F88A111885583A005020DA = {
+						DevelopmentTeam = R22JRCYFL6;
+					};
 					32F88A311885583B005020DA = {
 						TestTargetID = 32F88A111885583A005020DA;
 					};
@@ -309,16 +415,22 @@
 			files = (
 				328F0B0D189036C3004234C4 /* DKAboutViewController_iPhone_white.xib in Resources */,
 				328F0AFC18901AA8004234C4 /* color white iphone.png in Resources */,
+				32B1F81C18909CA40051C3DF /* vk iphone white.png in Resources */,
 				328F0AFA18901AA8004234C4 /* color black iphone.png in Resources */,
 				328F0AFF1890261C004234C4 /* snegiriWhite.png in Resources */,
 				32F88A221885583A005020DA /* InfoPlist.strings in Resources */,
 				32F88A4E18856B1C005020DA /* DKMainViewController_iPhone_white.xib in Resources */,
+				32B1F81718909CA40051C3DF /* facebook iphone black copy.png in Resources */,
 				328F0AEE188EDB5E004234C4 /* play iphone black.png in Resources */,
 				328F0AED188EDB5E004234C4 /* play ipad white.png in Resources */,
 				328F0B001890261C004234C4 /* snegitiBlack.png in Resources */,
+				32B1F81A18909CA40051C3DF /* instagram iphone white.png in Resources */,
+				32B1F81B18909CA40051C3DF /* vk iphone black.png in Resources */,
 				328F0B0B18902EC8004234C4 /* DKAboutViewController_iPhone_black.xib in Resources */,
+				32B1F81818909CA40051C3DF /* facebook iphone white copy.png in Resources */,
 				32F88A2D1885583B005020DA /* Images.xcassets in Resources */,
 				328F0AEC188EDB5E004234C4 /* play ipad black.png in Resources */,
+				32B1F81918909CA40051C3DF /* instagram iphone  black.png in Resources */,
 				328F0AF618901933004234C4 /* DKColorViewController_iPhone.xib in Resources */,
 				328F0AEF188EDB5E004234C4 /* play iphone white.png in Resources */,
 				328F0AF1188EE22E004234C4 /* DKMainViewController_iPhone_black.xib in Resources */,
@@ -373,9 +485,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B1F8421891D4350051C3DF /* AFDownloadRequestOperation.m in Sources */,
+				32B1F84B1891D4350051C3DF /* UIImageView+AFNetworking.m in Sources */,
 				32F88A4D18856B1B005020DA /* DKMainViewController.m in Sources */,
+				32B1F8461891D4350051C3DF /* AFJSONRequestOperation.m in Sources */,
+				32B1F8441891D4350051C3DF /* AFHTTPRequestOperation.m in Sources */,
+				32B1F84A1891D4350051C3DF /* AFXMLRequestOperation.m in Sources */,
+				32B1F8491891D4350051C3DF /* AFURLConnectionOperation.m in Sources */,
+				32B1F8451891D4350051C3DF /* AFImageRequestOperation.m in Sources */,
+				32B1F8431891D4350051C3DF /* AFHTTPClient.m in Sources */,
 				328F0B0418902DC7004234C4 /* DKAboutViewController.m in Sources */,
+				32B1F82A1891D2D60051C3DF /* NCMusicEngine.m in Sources */,
+				32B1F8481891D4350051C3DF /* AFPropertyListRequestOperation.m in Sources */,
 				32F88A241885583A005020DA /* main.m in Sources */,
+				32B1F8471891D4350051C3DF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				32F88A281885583B005020DA /* DKAppDelegate.m in Sources */,
 				328F0AF518901933004234C4 /* DKColorViewController.m in Sources */,
 				32F88A2B1885583B005020DA /* snegiriRadio.xcdatamodeld in Sources */,
@@ -500,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snegiriRadio/snegiriRadio-Prefix.pch";
 				INFOPLIST_FILE = "snegiriRadio/snegiriRadio-Info.plist";
@@ -514,6 +638,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snegiriRadio/snegiriRadio-Prefix.pch";
 				INFOPLIST_FILE = "snegiriRadio/snegiriRadio-Info.plist";

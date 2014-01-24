@@ -15,6 +15,9 @@
 @property (assign) id <DKAboutViewControllerDelegate> delegate;
 
 - (IBAction)done;
+- (IBAction)vkButtonPressed:(id)sender;
+- (IBAction)fbButtonPressed:(id)sender;
+- (IBAction)instaButtonPressed:(id)sender;
 
 @end
 
