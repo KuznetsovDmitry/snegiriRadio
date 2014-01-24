@@ -14,19 +14,21 @@
 @interface DKMainViewController : UIViewController <VKSdkDelegate, DKAboutViewControllerDelegate>
 
 //-----------------------------------------------------
-@property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
-@property (nonatomic, strong) NCMusicEngine *player;
 
--(void)updateTitle:(NSString*)title;
+@property (nonatomic, strong) NCMusicEngine *player;
 
 
 //-----------------------------------------------------
 
 @property (strong) NSArray *musicList;
+@property (getter = isWhite) BOOL color;
 
 @property (retain, nonatomic) IBOutlet UILabel *trackTitle;
 @property (retain, nonatomic) IBOutlet UILabel *artistTitle;
-@property (getter = isWhite) BOOL color;
+@property (nonatomic, retain) IBOutlet UISlider *volumeSlider;
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UIButton *aboutButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 - (IBAction)getMusic:(id)sender;
 @end

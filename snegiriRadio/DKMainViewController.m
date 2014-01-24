@@ -15,7 +15,6 @@ static NSString *const APP_ID = @"4119359";
 - (void)authorize;
 - (void)nextTrack;
 - (IBAction)showAbout:(id)sender;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @end
 
 @implementation DKMainViewController
@@ -29,16 +28,6 @@ static NSString *const APP_ID = @"4119359";
     }
     
     return self;
-}
-
-//изменить титульник
--(void)updateTitle:(NSString*)title {
-	// update view text
-//    title = [title stringByReplacingOccurrencesOfString:@"StreamTitle='(.*)';"
-//                                             withString:@"$1"
-//                                                options:NSRegularExpressionSearch
-//                                                  range:NSMakeRange(0, [title length])];
-//    [self.trackTitle setText:title];
 }
 
 //изменить кнопки
@@ -82,6 +71,29 @@ static NSString *const APP_ID = @"4119359";
     NSLog(@"- (void)viewDidLoad");
     [super viewDidLoad];
     
+    if (![self isWhite]) {
+        self.view.backgroundColor = [UIColor blackColor];
+        
+        self.trackTitle.textColor = [UIColor whiteColor];
+        self.trackTitle.backgroundColor = [UIColor blackColor];
+        
+        self.artistTitle.textColor = [UIColor whiteColor];
+        self.artistTitle.backgroundColor = [UIColor blackColor];
+        
+        [self.loadingIndicator setColor:[UIColor whiteColor]];
+        
+        self.volumeSlider.minimumTrackTintColor = [UIColor redColor];
+        self.volumeSlider.maximumTrackTintColor = [UIColor grayColor];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            [self.playButton setImage:[UIImage imageNamed:@"play_iphone_black.png"] forState:UIControlStateNormal];
+            
+            [self.aboutButton setImage:[UIImage imageNamed:@"logo_about_white.png"] forState:UIControlStateNormal];
+        } else {
+            //IPad
+        }
+    }
+    
     VKAccessToken *token =[VKAccessToken tokenFromDefaults:TOKEN_KEY];
     [VKSdk initializeWithDelegate:self andAppId:APP_ID andCustomToken:[VKAccessToken tokenFromDefaults:TOKEN_KEY]];
     if (token == nil) {
@@ -90,6 +102,7 @@ static NSString *const APP_ID = @"4119359";
     
     _player = [NCMusicEngine new];
     _player.delegate = self;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -134,16 +147,13 @@ static NSString *const APP_ID = @"4119359";
 - (IBAction)showAbout:(id)sender {
     DKAboutViewController *aboutController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        if ([self isWhite]) {
-            aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPhone_white" bundle:nil];
-        } else {
-           aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPhone_black" bundle:nil];
-        }
+        aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPhone" bundle:nil];
     } else {
         //iPad
     }
 
     aboutController.delegate = self;
+    aboutController.color = _color;
 	
 	aboutController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentViewController:aboutController animated:YES completion:nil];

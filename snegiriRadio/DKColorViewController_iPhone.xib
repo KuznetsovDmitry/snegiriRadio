@@ -14,40 +14,55 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHR-Py-I5e">
-                    <rect key="frame" x="30" y="227" width="120" height="120"/>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHR-Py-I5e">
+                    <rect key="frame" x="23" y="211" width="133" height="133"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="color white iphone.png">
+                    <state key="normal" image="color_white_iphone.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="whiteColor:" destination="-1" eventType="touchUpInside" id="68h-h2-THo"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzq-8Q-gm5">
-                    <rect key="frame" x="170" y="227" width="120" height="120"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzq-8Q-gm5">
+                    <rect key="frame" x="167" y="211" width="133" height="133"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="color black iphone.png">
+                    <state key="normal" image="color_black_iphone.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="blackColor:" destination="-1" eventType="touchUpInside" id="Nu5-NM-XWK"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЦВЕТ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umM-Ap-hJ0">
-                    <rect key="frame" x="0.0" y="119" width="320" height="40"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЦВЕТ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umM-Ap-hJ0">
+                    <rect key="frame" x="0.0" y="120" width="320" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="24"/>
+                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="umM-Ap-hJ0" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="3SP-Bk-cNz"/>
+                <constraint firstItem="umM-Ap-hJ0" firstAttribute="top" secondItem="1" secondAttribute="top" constant="120" id="JS7-Ad-LWU"/>
+                <constraint firstItem="pzq-8Q-gm5" firstAttribute="height" secondItem="fHR-Py-I5e" secondAttribute="height" id="T08-Er-3xE"/>
+                <constraint firstAttribute="trailing" secondItem="pzq-8Q-gm5" secondAttribute="trailing" constant="20" symbolic="YES" id="WyP-c4-UWq"/>
+                <constraint firstItem="pzq-8Q-gm5" firstAttribute="leading" secondItem="fHR-Py-I5e" secondAttribute="trailing" constant="11" id="aWA-Nf-Cqg"/>
+                <constraint firstAttribute="trailing" secondItem="umM-Ap-hJ0" secondAttribute="trailing" id="i8M-d2-XdM"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pzq-8Q-gm5" secondAttribute="trailing" constant="20" id="mov-Rg-uKe"/>
+                <constraint firstItem="pzq-8Q-gm5" firstAttribute="width" secondItem="fHR-Py-I5e" secondAttribute="width" id="uWB-7u-0sA"/>
+                <constraint firstItem="fHR-Py-I5e" firstAttribute="top" secondItem="umM-Ap-hJ0" secondAttribute="bottom" constant="56" id="wZL-Tu-PJ3"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fHR-Py-I5e" secondAttribute="bottom" constant="30" id="y0S-il-fHi"/>
+                <constraint firstItem="pzq-8Q-gm5" firstAttribute="top" secondItem="umM-Ap-hJ0" secondAttribute="bottom" constant="56" id="zen-Cf-JGo"/>
+                <constraint firstItem="pzq-8Q-gm5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fHR-Py-I5e" secondAttribute="trailing" priority="501" constant="11" id="zgE-0W-tNy"/>
+                <constraint firstItem="fHR-Py-I5e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1" secondAttribute="leading" constant="20" id="zhx-rP-KQq"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
-        <image name="color black iphone.png" width="267" height="267"/>
-        <image name="color white iphone.png" width="267" height="267"/>
+        <image name="color_black_iphone.png" width="133" height="133"/>
+        <image name="color_white_iphone.png" width="133" height="133"/>
     </resources>
 </document>

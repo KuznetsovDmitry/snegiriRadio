@@ -26,7 +26,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    if (![self isWhite]) {
+        self.view.backgroundColor = [UIColor blackColor];
+        
+        self.label1.textColor = [UIColor whiteColor];
+        self.label1.backgroundColor = [UIColor blackColor];
+        self.label2.textColor = [UIColor whiteColor];
+        self.label2.backgroundColor = [UIColor blackColor];
+        
+        [self.navigationBar setBarTintColor:[UIColor blackColor]];
+        [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil]];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            self.logo.image = [UIImage imageNamed:@"logo_white.png"];
+            [self.vkButton setImage:[UIImage imageNamed:@"vk_iphone_black.png"] forState:UIControlStateNormal];
+            [self.fbButton setImage:[UIImage imageNamed:@"facebook_iphone_black.png"] forState:UIControlStateNormal];
+            [self.instaButton setImage:[UIImage imageNamed:@"instagram_iphone_black.png"] forState:UIControlStateNormal];
+        } else {
+            //IPad
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,7 +12,7 @@
 @interface DKColorViewController ()
 - (IBAction)whiteColor:(id)sender;
 - (IBAction)blackColor:(id)sender;
-
+- (void)addChildControllerWithColor:(BOOL)color;
 @end
 
 @implementation DKColorViewController
@@ -38,29 +38,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)whiteColor:(id)sender {
+- (void)addChildControllerWithColor:(BOOL)color {
     DKMainViewController *mainController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone_white" bundle:nil];
-    } else {
-       //iPad
-    }
-	
-    mainController.color = YES;
-	mainController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentViewController:mainController animated:YES completion:nil];
-}
-
-- (IBAction)blackColor:(id)sender {
-    DKMainViewController *mainController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone_black" bundle:nil];
+        mainController = [[DKMainViewController alloc] initWithNibName:@"DKMainViewController_iPhone" bundle:nil];
     } else {
         //iPad
     }
     
-    mainController.color = NO;
+    mainController.color = color;
+    
 	mainController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentViewController:mainController animated:YES completion:nil];
+}
+
+- (IBAction)whiteColor:(id)sender {
+    [self addChildControllerWithColor:YES];
+}
+
+- (IBAction)blackColor:(id)sender {
+    [self addChildControllerWithColor:NO];
 }
 @end

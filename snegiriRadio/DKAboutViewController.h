@@ -14,6 +14,16 @@
 
 @property (assign) id <DKAboutViewControllerDelegate> delegate;
 
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) IBOutlet UILabel *label1;
+@property (strong, nonatomic) IBOutlet UILabel *label2;
+@property (strong, nonatomic) IBOutlet UIImageView *logo;
+@property (strong, nonatomic) IBOutlet UIButton *vkButton;
+@property (strong, nonatomic) IBOutlet UIButton *fbButton;
+@property (strong, nonatomic) IBOutlet UIButton *instaButton;
+
+@property (getter = isWhite) BOOL color;
+
 - (IBAction)done;
 - (IBAction)vkButtonPressed:(id)sender;
 - (IBAction)fbButtonPressed:(id)sender;

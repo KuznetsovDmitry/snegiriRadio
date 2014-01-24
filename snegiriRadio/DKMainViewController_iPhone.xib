@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DKMainViewController">
+            <connections>
+                <outlet property="aboutButton" destination="VT3-tR-ij1" id="prT-b8-b2J"/>
+                <outlet property="artistTitle" destination="CAd-Lx-3Vs" id="oU6-ae-70o"/>
+                <outlet property="loadingIndicator" destination="KWn-j9-Cvi" id="kTD-4i-d8f"/>
+                <outlet property="playButton" destination="BN5-Io-Zow" id="QVH-0r-xqQ"/>
+                <outlet property="trackTitle" destination="gL2-Sm-MkD" id="FXI-7f-4ac"/>
+                <outlet property="view" destination="1" id="3"/>
+                <outlet property="volumeSlider" destination="kuh-YU-ZAA" id="91F-1a-Yx8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BN5-Io-Zow">
+                    <rect key="frame" x="89" y="123" width="144" height="144"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="play_iphone_white.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getMusic:" destination="-1" eventType="touchUpInside" id="9H3-Ld-qJg"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KWn-j9-Cvi">
+                    <rect key="frame" x="150" y="459" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" minimumFontSize="10" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="gL2-Sm-MkD">
+                    <rect key="frame" x="20" y="401" width="280" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="eCB-gs-QQD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="CAd-Lx-3Vs">
+                    <rect key="frame" x="20" y="367" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="koF-rX-xxS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kuh-YU-ZAA">
+                    <rect key="frame" x="18" y="301" width="284" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </slider>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VT3-tR-ij1">
+                    <rect key="frame" x="260" y="508" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="logo_about_black.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showAbout:" destination="-1" eventType="touchUpInside" id="BHS-4g-29q"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="KWn-j9-Cvi" secondAttribute="centerX" id="3Xy-I7-ZU4"/>
+                <constraint firstAttribute="trailing" secondItem="VT3-tR-ij1" secondAttribute="trailing" id="53C-WU-tDW"/>
+                <constraint firstAttribute="trailing" secondItem="gL2-Sm-MkD" secondAttribute="trailing" constant="20" id="7PD-7u-lF9"/>
+                <constraint firstItem="gL2-Sm-MkD" firstAttribute="top" secondItem="CAd-Lx-3Vs" secondAttribute="bottom" constant="4" id="8vs-2b-Kns"/>
+                <constraint firstItem="kuh-YU-ZAA" firstAttribute="top" secondItem="BN5-Io-Zow" secondAttribute="bottom" constant="34" id="9ET-5W-oLd"/>
+                <constraint firstItem="CAd-Lx-3Vs" firstAttribute="top" secondItem="kuh-YU-ZAA" secondAttribute="bottom" constant="33" id="EGu-70-q6L"/>
+                <constraint firstAttribute="trailing" secondItem="CAd-Lx-3Vs" secondAttribute="trailing" constant="20" id="FG9-ZL-34X"/>
+                <constraint firstItem="kuh-YU-ZAA" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="KgJ-Ai-o7e"/>
+                <constraint firstItem="CAd-Lx-3Vs" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="PM7-D3-NaH"/>
+                <constraint firstAttribute="trailing" secondItem="kuh-YU-ZAA" secondAttribute="trailing" constant="20" id="Xwb-S3-jXX"/>
+                <constraint firstAttribute="bottom" secondItem="VT3-tR-ij1" secondAttribute="bottom" id="Z8l-XE-w3x"/>
+                <constraint firstItem="gL2-Sm-MkD" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="ZCN-0U-KWf"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="KWn-j9-Cvi" secondAttribute="bottom" priority="507" constant="89" id="bgO-EJ-9D7"/>
+                <constraint firstItem="KWn-j9-Cvi" firstAttribute="top" secondItem="gL2-Sm-MkD" secondAttribute="bottom" constant="8" id="dNe-RQ-Dm3"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BN5-Io-Zow" secondAttribute="trailing" constant="87" id="dR7-op-Hbx"/>
+                <constraint firstItem="BN5-Io-Zow" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1" secondAttribute="leading" constant="89" id="kBw-dL-XVw"/>
+                <constraint firstItem="BN5-Io-Zow" firstAttribute="top" relation="lessThanOrEqual" secondItem="1" secondAttribute="top" constant="123" id="mPE-Dz-ddI"/>
+                <constraint firstItem="BN5-Io-Zow" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" priority="899" constant="70" id="qEU-Vs-Bbg"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo_about_black.png" width="60" height="60"/>
+        <image name="play_iphone_white.png" width="144" height="144"/>
+    </resources>
+</document>
