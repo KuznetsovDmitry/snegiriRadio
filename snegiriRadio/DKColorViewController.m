@@ -49,6 +49,7 @@
     mainController.color = color;
     
 	mainController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    _mainViewController = mainController;
 	[self presentViewController:mainController animated:YES completion:nil];
 }
 

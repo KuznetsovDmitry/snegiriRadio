@@ -7,6 +7,7 @@
 //
 
 #import "DKMainViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 static NSString *const TOKEN_KEY = @"my_application_access_token";
 static NSString *const APP_ID = @"4119359";
@@ -28,42 +29,6 @@ static NSString *const APP_ID = @"4119359";
     }
     
     return self;
-}
-
-//изменить кнопки
--(void)plaingChanged:(int)state {
-// ИЗМЕНИТЬ КНОПКИ!!!
-    
-//    switch (state) {
-//            // stop/pause
-//        case 0:
-//            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//                [self.radioButton setImage:[UIImage imageNamed:@"playbutton.png"] forState:0];
-//            } else {
-//                [self.radioButton setImage:[UIImage imageNamed:@"playbutton-IPad.png"] forState:0];
-//            }
-//            break;
-//            // loading
-//        case 1:
-//            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//                [self.radioButton setImage:[UIImage imageNamed:@"loadingbutton.png"] forState:0];
-//            } else {
-//                [self.radioButton setImage:[UIImage imageNamed:@"loadingbutton-IPad.png"] forState:0];
-//            }
-//            [self spinButton];
-//            break;
-//            // play
-//        case 2:
-//            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//                [self.radioButton setImage:[UIImage imageNamed:@"pausebutton.png"] forState:0];
-//            } else {
-//                [self.radioButton setImage:[UIImage imageNamed:@"pausebutton-IPad.png"] forState:0];
-//            }
-//            break;
-//        default:
-//            break;
-//    }
-//    
 }
 
 - (void)viewDidLoad
@@ -104,7 +69,10 @@ static NSString *const APP_ID = @"4119359";
     
     _player = [NCMusicEngine new];
     _player.delegate = self;
+    _isPlayed = NO;
+    _firstPlay = YES;
     
+    [[self player] volume:0.5f];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -129,15 +97,15 @@ static NSString *const APP_ID = @"4119359";
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     //if it is a remote control event handle it correctly
-//    if (event.type == UIEventTypeRemoteControl) {
-//        if (event.subtype == UIEventSubtypeRemoteControlPlay) {
-//            [self.radio updatePlay:YES];
-//        } else if (event.subtype == UIEventSubtypeRemoteControlPause) {
-//            [self.radio updatePlay:NO];
-//        } else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) {
-//            [self radioButtonPressed];
-//        }
-//    }
+    if (event.type == UIEventTypeRemoteControl) {
+        if (event.subtype == UIEventSubtypeRemoteControlPlay) {
+            [self playButtonPressed:nil];
+        } else if (event.subtype == UIEventSubtypeRemoteControlPause) {
+            [self playButtonPressed:nil];
+        } else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) {
+            [self playButtonPressed:nil];
+        }
+    }
 }
 
 - (void)authorize
@@ -208,28 +176,62 @@ static NSString *const APP_ID = @"4119359";
     
 }
 
-- (IBAction)getMusic:(id)sender {
+- (IBAction)playButtonPressed:(id)sender {
+    if (![self isPlayed]) {
+        if ([self isWhite]) {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_iphone_white.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_ipad_white.png"] forState:UIControlStateNormal];
+            }
+        } else {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_iphone_black.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_ipad_black.png"] forState:UIControlStateNormal];
+            }
+        }
+        if ([self firstPlay]) {
+            self.firstPlay = NO;
+            VKRequest *request = [VKRequest requestWithMethod:@"audio.get"
+                                                andParameters:@{VK_API_OWNER_ID : @"-58215044",
+                                                                @"need_user": @"0",
+                                                                @"count"    : @"0"}
+                                                andHttpMethod:@"GET"];
+            
+            [self.loadingIndicator startAnimating];
+            [request executeWithResultBlock:^(VKResponse * response) {
+                NSLog(@"Json result: %@", response.json);
+                self.musicList = [response.json objectForKey:@"items"];
+                [self.loadingIndicator stopAnimating];
+                [self nextTrack];
+            } errorBlock:^(VKError *error) {
+                NSLog(@"ERROR CODE: %d", error.errorCode);
+                [error.request repeat];
+            }];
+        } else {
+            [self.player resume];
+        }
+	} else {
+        if ([self isWhite]) {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"play_iphone_white.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"play_ipad_white.png"] forState:UIControlStateNormal];
+            }
+        } else {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"play_iphone_black.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"play_ipad_black.png"] forState:UIControlStateNormal];
+            }
+        }
+        [self.player pause];
+	}
+}
 
-    VKRequest *request = [VKRequest requestWithMethod:@"audio.get"
-                                    andParameters:@{VK_API_OWNER_ID : @"-58215044",
-                                                    @"need_user": @"0",
-                                                    @"count"    : @"0"}
-                                    andHttpMethod:@"GET"];
-    
-    [self.loadingIndicator startAnimating];
-    [request executeWithResultBlock:^(VKResponse * response) {
-        NSLog(@"Json result: %@", response.json);
-        self.musicList = [response.json objectForKey:@"items"];
-        [self.loadingIndicator stopAnimating];
-        [self nextTrack];
-    } errorBlock:^(VKError *error) {
-        NSLog(@"ERROR CODE: %d", error.errorCode);
-        [error.request repeat];
-    }];
-    
-    
-    
-   // [[self title] setText:[NSString stringWithFormat:@"\u0414\u0435\u043a\u0430\u0431\u0440\u044f"]];
+- (IBAction)volumeChanged:(id)sender {
+    [[self player] volume:self.volumeSlider.value];
 }
 
 - (void)nextTrack {
@@ -242,8 +244,13 @@ static NSString *const APP_ID = @"4119359";
 }
 
 - (void)engine:(NCMusicEngine *)engine didChangePlayState:(NCMusicEnginePlayState)playState {
+
     if (playState == NCMusicEnginePlayStateEnded) {
         [self nextTrack];
+    } else if (playState == NCMusicEnginePlayStatePlaying) {
+        [self play:YES];
+    } else if (playState == NCMusicEnginePlayStatePaused) {
+        [self play:NO];
     }
 }
 

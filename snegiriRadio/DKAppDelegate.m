@@ -9,6 +9,7 @@
 #import <VKSdk.h>
 #import "DKAppDelegate.h"
 #import "DKColorViewController.h"
+#import "DKMainViewController.h"
 
 @implementation DKAppDelegate
 
@@ -28,6 +29,7 @@
         colorController = [[DKColorViewController alloc] initWithNibName:@"DKColorViewController_iPad" bundle:nil];
     }
     
+    _colorViewController = colorController;
     self.window.rootViewController = colorController;
     
     [self.window makeKeyAndVisible];
@@ -66,6 +68,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
+
     [self saveContext];
 }
 

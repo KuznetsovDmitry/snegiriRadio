@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class DKMainViewController;
+
 @interface DKColorViewController : UIViewController
+
+@property (strong, nonatomic) DKMainViewController *mainViewController;
 
 @end

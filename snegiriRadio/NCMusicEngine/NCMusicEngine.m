@@ -78,14 +78,32 @@
 #pragma mark -
 #pragma mark Public Methods
 
+- (void)volume:(float)vol {
+    [_player setVolume:vol];
+}
+
 - (void)prepareBackgroundPlaying {
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
   [[AVAudioSession sharedInstance] setActive: YES error: nil];
-  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+  //[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
   _backgroundPlayingEnabled = YES;
 }
 
 - (void)playUrl:(NSURL*)url {
+    
+    BOOL success;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *cacheFolderPath = [[self class] cacheFolder];
+    NSString *localPath;
+    NSArray *contents = [fileManager contentsOfDirectoryAtPath:cacheFolderPath error:nil];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'mp3'"];
+    for (NSString *filePath in [contents filteredArrayUsingPredicate:predicate]) {
+        // Enumerate each .mp3 file in directory
+        localPath = [cacheFolderPath stringByAppendingPathComponent:filePath];
+        success = [fileManager removeItemAtPath:localPath error:nil];
+    }
+    
   NSString *cacheKey = [self cacheKeyFromUrl:url];
   [self playUrl:url withCacheKey:cacheKey];
 }

@@ -546,13 +546,18 @@
 				TargetAttributes = {
 					32F88A111885583A005020DA = {
 						DevelopmentTeam = R22JRCYFL6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					32F88A311885583B005020DA = {
 						TestTargetID = 32F88A111885583A005020DA;
 					};
 				};
 			};
-			buildConfigurationList = 32F88A0D1885583A005020DA /* Build configuration list for PBXProject "snegiriRadio" */;
+			buildConfigurationList = 32F88A0D1885583A005020DA /* Build configuration list for PBXProject "SnegiriRadio" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -774,6 +779,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -814,6 +820,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -837,6 +844,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snegiriRadio/snegiriRadio-Prefix.pch";
 				INFOPLIST_FILE = "snegiriRadio/snegiriRadio-Info.plist";
@@ -852,6 +860,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "snegiriRadio/snegiriRadio-Prefix.pch";
 				INFOPLIST_FILE = "snegiriRadio/snegiriRadio-Info.plist";
@@ -905,7 +914,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		32F88A0D1885583A005020DA /* Build configuration list for PBXProject "snegiriRadio" */ = {
+		32F88A0D1885583A005020DA /* Build configuration list for PBXProject "SnegiriRadio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32F88A421885583B005020DA /* Debug */,

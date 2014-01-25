@@ -22,6 +22,8 @@
 
 @property (strong) NSArray *musicList;
 @property (getter = isWhite) BOOL color;
+@property (nonatomic, setter = play:) BOOL isPlayed;
+@property (nonatomic) BOOL firstPlay;
 
 @property (retain, nonatomic) IBOutlet UILabel *trackTitle;
 @property (retain, nonatomic) IBOutlet UILabel *artistTitle;
@@ -30,5 +32,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *aboutButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
-- (IBAction)getMusic:(id)sender;
+- (IBAction)playButtonPressed:(id)sender;
+- (IBAction)volumeChanged:(id)sender;
 @end

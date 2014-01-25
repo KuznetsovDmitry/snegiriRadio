@@ -49,6 +49,7 @@ typedef enum {
 - (void)pause;
 - (void)resume;
 - (void)stop; // Stop music and stop download.
+- (void)volume:(float)vol;
 
 @end
 
