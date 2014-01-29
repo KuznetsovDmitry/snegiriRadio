@@ -49,13 +49,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snegiri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOC-wM-f3Y">
-                    <rect key="frame" x="129" y="122" width="63" height="28"/>
+                    <rect key="frame" x="129" y="129" width="63" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="24"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="z29-Cy-3ck">
-                    <rect key="frame" x="88" y="209" width="144" height="144"/>
+                    <rect key="frame" x="88" y="216" width="144" height="144"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-FS-rbx">
@@ -108,7 +108,7 @@
                 <constraint firstAttribute="bottom" secondItem="uis-HL-Jsa" secondAttribute="bottom" constant="20" id="DdB-s5-oV6"/>
                 <constraint firstItem="OV1-HJ-XuU" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" id="HJL-Nx-rR4"/>
                 <constraint firstItem="eTT-Sj-dHB" firstAttribute="centerX" secondItem="KKG-hG-9Vf" secondAttribute="centerX" id="MCH-ec-t6Z"/>
-                <constraint firstItem="KOC-wM-f3Y" firstAttribute="top" secondItem="eTT-Sj-dHB" secondAttribute="bottom" constant="-7" id="OG3-ag-vFT"/>
+                <constraint firstItem="KOC-wM-f3Y" firstAttribute="top" secondItem="eTT-Sj-dHB" secondAttribute="bottom" id="OG3-ag-vFT"/>
                 <constraint firstAttribute="trailing" secondItem="OV1-HJ-XuU" secondAttribute="trailing" id="Vet-SK-3jJ"/>
                 <constraint firstItem="eTT-Sj-dHB" firstAttribute="centerX" secondItem="z29-Cy-3ck" secondAttribute="centerX" id="Y6G-xQ-6Ea"/>
                 <constraint firstItem="eTT-Sj-dHB" firstAttribute="centerX" secondItem="KOC-wM-f3Y" secondAttribute="centerX" id="Yyx-cj-z5j"/>

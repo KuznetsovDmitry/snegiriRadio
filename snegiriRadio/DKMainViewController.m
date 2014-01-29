@@ -12,13 +12,79 @@
 static NSString *const TOKEN_KEY = @"my_application_access_token";
 static NSString *const APP_ID = @"4119359";
 
-@interface DKMainViewController () <NCMusicEngineDelegate>
+@interface DKMainViewController () <NCMusicEngineDelegate> {
+    BOOL _hasTrackList;
+    BOOL _gettingTrackList;
+    BOOL _errorOccured;
+    int _errorsCount;
+}
+
 - (void)authorize;
 - (void)nextTrack;
+- (void)reset;
+- (void)errorHandle;
 - (IBAction)showAbout:(id)sender;
+
+- (void)setCentralButton:(BOOL)playButton;
 @end
 
 @implementation DKMainViewController
+
+- (void)errorHandle {
+    [self play:NO];
+    [self setCentralButton:YES];
+    if (!_errorOccured) {
+        _errorOccured = YES;
+        [self reset];
+        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
+    }
+}
+
+- (void)setCentralButton:(BOOL)playButton {
+    if (playButton) {
+        if ([self isWhite]) {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"play_iphone_white.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"play_ipad_white.png"] forState:UIControlStateNormal];
+            }
+        } else {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"play_iphone_black.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"play_ipad_black.png"] forState:UIControlStateNormal];
+            }
+        }
+    } else {
+        if ([self isWhite]) {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_iphone_white.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_ipad_white.png"] forState:UIControlStateNormal];
+            }
+        } else {
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_iphone_black.png"] forState:UIControlStateNormal];
+            } else {
+                [self.playButton setImage:[UIImage imageNamed:@"pause_ipad_black.png"] forState:UIControlStateNormal];
+            }
+        }
+    }
+}
+
+- (void)reset {
+    [self setCentralButton:YES];
+    [self.trackTitle setText:@""];
+    [self.artistTitle setText:@""];
+    _isPlayed = NO;
+//    _player = [NCMusicEngine new];
+//    _player.delegate = self;
+//    _isPlayed = NO;
+    _gettingTrackList = NO;
+    _errorsCount = 0;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,8 +137,13 @@ static NSString *const APP_ID = @"4119359";
     _player.delegate = self;
     _isPlayed = NO;
     _firstPlay = YES;
+    _hasTrackList = NO;
+    _gettingTrackList = NO;
+    _errorsCount = 0;
+    _errorOccured = NO;
+//    _attempts = 0;
     
-    [[self player] volume:0.5f];
+//    [[self player] volume:0.5f];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -111,7 +182,7 @@ static NSString *const APP_ID = @"4119359";
 - (void)authorize
 {
     NSLog(@"- (void)authorize");
-    [VKSdk authorize:@[VK_PER_AUDIO] revokeAccess:YES];
+    [VKSdk authorize:@[VK_PER_AUDIO, VK_PER_OFFLINE] revokeAccess:YES];
 }
 
 - (IBAction)showAbout:(id)sender {
@@ -177,22 +248,11 @@ static NSString *const APP_ID = @"4119359";
 }
 
 - (IBAction)playButtonPressed:(id)sender {
-    if (![self isPlayed]) {
-        if ([self isWhite]) {
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-                [self.playButton setImage:[UIImage imageNamed:@"pause_iphone_white.png"] forState:UIControlStateNormal];
-            } else {
-                [self.playButton setImage:[UIImage imageNamed:@"pause_ipad_white.png"] forState:UIControlStateNormal];
-            }
-        } else {
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-                [self.playButton setImage:[UIImage imageNamed:@"pause_iphone_black.png"] forState:UIControlStateNormal];
-            } else {
-                [self.playButton setImage:[UIImage imageNamed:@"pause_ipad_black.png"] forState:UIControlStateNormal];
-            }
-        }
-        if ([self firstPlay]) {
-            self.firstPlay = NO;
+    if (!_hasTrackList) {
+        //ПОЛУЧЕНИЕ ТРЕК_ЛИСТА
+        [self setCentralButton:NO];
+        if (!_gettingTrackList) {
+            _gettingTrackList = YES;
             VKRequest *request = [VKRequest requestWithMethod:@"audio.get"
                                                 andParameters:@{VK_API_OWNER_ID : @"-58215044",
                                                                 @"need_user": @"0",
@@ -200,34 +260,62 @@ static NSString *const APP_ID = @"4119359";
                                                 andHttpMethod:@"GET"];
             
             [self.loadingIndicator startAnimating];
+            
+            request.progressBlock = ^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {
+                NSLog(@"loaded: %lld from: %lld", bytesLoaded, bytesTotal);
+            };
+            
             [request executeWithResultBlock:^(VKResponse * response) {
-                NSLog(@"Json result: %@", response.json);
-                self.musicList = [response.json objectForKey:@"items"];
                 [self.loadingIndicator stopAnimating];
-                [self nextTrack];
+                if (response.json == nil) {
+                    [self errorHandle];
+//                    [self reset];
+//                    [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+//                                               delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                } else {
+                    _hasTrackList = YES;
+                    NSLog(@"Json result: %@", response.json);
+                    self.musicList = [response.json objectForKey:@"items"];
+                    [self nextTrack];
+                }
             } errorBlock:^(VKError *error) {
-                NSLog(@"ERROR CODE: %d", error.errorCode);
-                [error.request repeat];
+//                ++_errorsCount;
+//                if (_errorsCount < 30) {
+                if (error.errorCode != VK_API_ERROR) {
+                    [error.request repeat];
+                } else {
+                    NSLog(@"VK error: %@", error.apiError);
+                    [self authorize];
+                    [self setCentralButton:YES];
+                    [self.loadingIndicator stopAnimating];
+                    [self errorHandle];
+                }
+//                    NSLog(@"ERROR CODE: %d", error.errorCode);
+//                    [error.request repeat];
+//                } else {
+                
+                
+//                    [self reset];
+//                    [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+//                                               delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//                }
             }];
-        } else {
-            [self.player resume];
         }
-	} else {
-        if ([self isWhite]) {
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-                [self.playButton setImage:[UIImage imageNamed:@"play_iphone_white.png"] forState:UIControlStateNormal];
+    } else if (!_errorOccured) {
+            if ([self isPlayed]) {
+                [self setCentralButton:YES];
+                [self.player pause];
             } else {
-                [self.playButton setImage:[UIImage imageNamed:@"play_ipad_white.png"] forState:UIControlStateNormal];
+                [self setCentralButton:NO];
+                [self.player resume];
             }
-        } else {
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-                [self.playButton setImage:[UIImage imageNamed:@"play_iphone_black.png"] forState:UIControlStateNormal];
-            } else {
-                [self.playButton setImage:[UIImage imageNamed:@"play_ipad_black.png"] forState:UIControlStateNormal];
-            }
-        }
-        [self.player pause];
-	}
+    } else {
+        _errorOccured = NO;
+        [self setCentralButton:NO];
+        [self nextTrack];
+    }
+    
+
 }
 
 - (IBAction)volumeChanged:(id)sender {
@@ -246,12 +334,47 @@ static NSString *const APP_ID = @"4119359";
 - (void)engine:(NCMusicEngine *)engine didChangePlayState:(NCMusicEnginePlayState)playState {
 
     if (playState == NCMusicEnginePlayStateEnded) {
+        [self setCentralButton:YES];
         [self nextTrack];
     } else if (playState == NCMusicEnginePlayStatePlaying) {
+        [self setCentralButton:NO];
+        [self volumeChanged:nil];
         [self play:YES];
     } else if (playState == NCMusicEnginePlayStatePaused) {
+        [self setCentralButton:YES];
         [self play:NO];
+    } else if (playState == NCMusicEnginePlayStateStopped) {
+        [self setCentralButton:YES];
+        [self play:NO];
+//        _errorOccured = YES;
+//        [self reset];
+//        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+//                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else if (playState == NCMusicEnginePlayStateError) {
+        [self setCentralButton:YES];
+        [self play:NO];
+        [self.player stop];
+//        _errorOccured = YES;
+        [self errorHandle];
+//        [self reset];
+//        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+//                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
+}
+
+- (void)engine:(NCMusicEngine *)engine didChangeDownloadState:(NCMusicEngineDownloadState)downloadState {
+//    if (downloadState == NCMusicEngineDownloadStateError) {
+//        [self setCentralButton:YES];
+//        [self play:NO];
+//        _errorOccured = YES;
+//        [self errorHandle];
+    
+        
+        
+//        [self reset];
+//        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+//                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//    }
 }
 
 @end

@@ -132,24 +132,11 @@
   }
   self.operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:_localFilePath shouldResume:YES useTemporaryFile:NO];
   __typeof(&*self) __weak weakSelf = self;
+    
   [self.operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *ro, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
     //
-#ifdef DDLogInfo
-    DDLogInfo(@"[NCMusicEngine] Download Progress: %u, %lld, %lld, %lld, %lld",
-          bytesRead, totalBytesRead, totalBytesExpected, totalBytesReadForFile, totalBytesExpectedToReadForFile);
-#else
     NSLog(@"[NCMusicEngine] Download Progress: %u, %lld, %lld, %lld, %lld",
           bytesRead, totalBytesRead, totalBytesExpected, totalBytesReadForFile, totalBytesExpectedToReadForFile);
-#endif
-    
-    // 
-    if (weakSelf.delegate &&
-        [weakSelf.delegate conformsToProtocol:@protocol(NCMusicEngineDelegate)] &&
-        [weakSelf.delegate respondsToSelector:@selector(engine:downloadProgress:)]) {
-      CGFloat p = (CGFloat)totalBytesReadForFile / (CGFloat)totalBytesExpectedToReadForFile;
-      if (p > 1) p = 1;
-      [weakSelf.delegate engine:weakSelf downloadProgress:p];
-    }
 
     //
     if (weakSelf.downloadState != NCMusicEngineDownloadStateDownloading)
@@ -199,12 +186,16 @@
     NSLog(@"[NCMusicEngine] Music file download error: %@", error);
 #endif
     
-    //
-    if (error.code != -999) {
+      
       weakSelf.error = error;
       weakSelf.downloadState = NCMusicEngineDownloadStateError;
       weakSelf.playState = NCMusicEnginePlayStateError;
-    }
+    //
+//    if (error.code != -999) {
+//      weakSelf.error = error;
+//      weakSelf.downloadState = NCMusicEngineDownloadStateError;
+//      weakSelf.playState = NCMusicEnginePlayStateError;
+//    }
   }];
   
   [self.operation start];
@@ -212,6 +203,7 @@
 }
 
 - (void)pause {
+    
   if (self.player && self.player.isPlaying) {
     [self.player pause];
     _pausedByUser = YES;
@@ -221,11 +213,12 @@
 }
 
 - (void)resume {
-  if (self.player && !self.player.isPlaying) {
-    [self.player play];
-    self.playState = NCMusicEnginePlayStatePlaying;
-    [self startPlayCheckingTimer];
-  }
+        if (self.player && !self.player.isPlaying) {
+            _pausedByUser = NO;
+            [self.player play];
+            self.playState = NCMusicEnginePlayStatePlaying;
+            [self startPlayCheckingTimer];
+        }
 }
 
 // Stop music and stop download.
@@ -246,13 +239,10 @@
   //
   NSTimeInterval playerCurrentTime = self.player.currentTime;
   NSTimeInterval playerDuration = self.player.duration;
-#ifdef DDLogInfo
-  DDLogInfo(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
-#else
-  NSLog(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
-#endif
 
-  //
+  NSLog(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
+
+
   if (self.delegate &&
       [self.delegate conformsToProtocol:@protocol(NCMusicEngineDelegate)] &&
       [self.delegate respondsToSelector:@selector(engine:playProgress:)]) {
@@ -262,10 +252,14 @@
       [self.delegate engine:self playProgress:playerCurrentTime / playerDuration];
   }
 
-  //
   if (playerDuration - playerCurrentTime < kNCMusicEnginePauseMargin && self.downloadState != NCMusicEngineDownloadStateDownloaded) {
-    [self pause];
-    _pausedByUser = NO;
+      [self.player pause];
+      self.playState = NCMusicEnginePlayStatePaused;
+      [_playCheckingTimer invalidate];
+//      if (_playCheckingTimer) {
+//          [_playCheckingTimer invalidate];
+//          _playCheckingTimer = nil;
+//      }
   }
 }
 
@@ -290,11 +284,12 @@
   if (self.player) {
     if (!self.player.isPlaying) {
       //
-      if ([self.player prepareToPlay]) NSLog(@"OK1");
+//      if ([self.player prepareToPlay]) NSLog(@"OK1");
       if ([self.player play]) NSLog(@"OK2");
       
       //
       self.playState = NCMusicEnginePlayStatePlaying;
+      
       
       //
       [self startPlayCheckingTimer];
@@ -330,7 +325,6 @@
             NSLog(@"LocalFle NOT DELETED!!!");
         }
     }
-    
     
   if (self.delegate &&
       [self.delegate conformsToProtocol:@protocol(NCMusicEngineDelegate)] &&
@@ -387,11 +381,11 @@
 }
 
 - (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player {
-  [self pause];
+    [self.player pause];
 }
 
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player withOptions:(NSUInteger)flags {
-  [self resume];
+    [self.player play];
 }
 
 @end
