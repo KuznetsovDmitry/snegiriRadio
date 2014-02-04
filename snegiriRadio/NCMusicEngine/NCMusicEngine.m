@@ -70,7 +70,7 @@
                                                     object:nil
                                                      queue:nil
                                                 usingBlock:^(NSNotification *note) {
-                                                  NSLog(@"Operation Started: %@", [note object]);
+//                                                  NSLog(@"Operation Started: %@", [note object]);
                                                 }];
   return self;
 }
@@ -135,8 +135,7 @@
     
   [self.operation setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *ro, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
     //
-    NSLog(@"[NCMusicEngine] Download Progress: %u, %lld, %lld, %lld, %lld",
-          bytesRead, totalBytesRead, totalBytesExpected, totalBytesReadForFile, totalBytesExpectedToReadForFile);
+//    NSLog(@"[NCMusicEngine] Download Progress: %u, %lld, %lld, %lld, %lld", bytesRead, totalBytesRead, totalBytesExpected, totalBytesReadForFile, totalBytesExpectedToReadForFile);
 
     //
     if (weakSelf.downloadState != NCMusicEngineDownloadStateDownloading)
@@ -158,11 +157,11 @@
 
   [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
     //
-#ifdef DDLogInfo
-    DDLogInfo(@"[NCMusicEngine] Music file downloaded successful.");
-#else
-    NSLog(@"[NCMusicEngine] Music file downloaded successful.");
-#endif
+//#ifdef DDLogInfo
+//    DDLogInfo(@"[NCMusicEngine] Music file downloaded successful.");
+//#else
+//    NSLog(@"[NCMusicEngine] Music file downloaded successful.");
+//#endif
 
     //
     if (weakSelf.delegate &&
@@ -180,22 +179,17 @@
     
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     //
-#ifdef DDLogError
-    DDLogError(@"[NCMusicEngine] Music file download error: %@", error);
-#else
-    NSLog(@"[NCMusicEngine] Music file download error: %@", error);
-#endif
+//#ifdef DDLogError
+//    DDLogError(@"[NCMusicEngine] Music file download error: %@", error);
+//#else
+//    NSLog(@"[NCMusicEngine] Music file download error: %@", error);
+//#endif
     
       
       weakSelf.error = error;
       weakSelf.downloadState = NCMusicEngineDownloadStateError;
       weakSelf.playState = NCMusicEnginePlayStateError;
-    //
-//    if (error.code != -999) {
-//      weakSelf.error = error;
-//      weakSelf.downloadState = NCMusicEngineDownloadStateError;
-//      weakSelf.playState = NCMusicEnginePlayStateError;
-//    }
+
   }];
   
   [self.operation start];
@@ -240,7 +234,7 @@
   NSTimeInterval playerCurrentTime = self.player.currentTime;
   NSTimeInterval playerDuration = self.player.duration;
 
-  NSLog(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
+//  NSLog(@"[NCMusicEngine] Music playing progress: %f / %f", playerCurrentTime, playerDuration);
 
 
   if (self.delegate &&
@@ -256,10 +250,6 @@
       [self.player pause];
       self.playState = NCMusicEnginePlayStatePaused;
       [_playCheckingTimer invalidate];
-//      if (_playCheckingTimer) {
-//          [_playCheckingTimer invalidate];
-//          _playCheckingTimer = nil;
-//      }
   }
 }
 
@@ -271,11 +261,11 @@
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:musicUrl error:&error];
     self.player.delegate = self;
     if (error) {
-#ifdef DDLogError
-      DDLogError(@"[NCMusicEngine] AVAudioPlayer initial error: %@", error);
-#else
-      NSLog(@"[NCMusicEngine] AVAudioPlayer initial error: %@", error);
-#endif
+//#ifdef DDLogError
+//      DDLogError(@"[NCMusicEngine] AVAudioPlayer initial error: %@", error);
+//#else
+//      NSLog(@"[NCMusicEngine] AVAudioPlayer initial error: %@", error);
+//#endif
       self.error = error;
       self.playState = NCMusicEnginePlayStateError;
     }
@@ -284,7 +274,7 @@
   if (self.player) {
     if (!self.player.isPlaying) {
       //
-//      if ([self.player prepareToPlay]) NSLog(@"OK1");
+      if ([self.player prepareToPlay]) NSLog(@"OK1");
       if ([self.player play]) NSLog(@"OK2");
       
       //
@@ -317,14 +307,6 @@
 
 - (void)setPlayState:(NCMusicEnginePlayState)playState {
     _playState = playState;
-//    if (_playState == NCMusicEnginePlayStateEnded) {
-//       BOOL success =[[NSFileManager defaultManager] removeItemAtPath:_localFilePath error:nil];
-//        if (success) {
-//            NSLog(@"LocalFile deleted!");
-//        } else {
-//            NSLog(@"LocalFle NOT DELETED!!!");
-//        }
-//    }
     
   if (self.delegate &&
       [self.delegate conformsToProtocol:@protocol(NCMusicEngineDelegate)] &&
@@ -353,11 +335,11 @@
     // ensure all cache directories are there (needed only once)
     NSError *error = nil;
     if(![[NSFileManager new] createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
-#ifdef DDLogError
-      DDLogError(@"[NCMusicEngine] Failed to create cache directory at %@", cacheFolder);
-#else
-      NSLog(@"[NCMusicEngine] Failed to create cache directory at %@", cacheFolder);
-#endif
+//#ifdef DDLogError
+//      DDLogError(@"[NCMusicEngine] Failed to create cache directory at %@", cacheFolder);
+//#else
+//      NSLog(@"[NCMusicEngine] Failed to create cache directory at %@", cacheFolder);
+//#endif
     }
   });
   return cacheFolder;

@@ -41,7 +41,6 @@ static NSString *const APP_ID = @"4119359";
     if (_errorOccured) {
         if (self.alert == nil) {
             _wasError = YES;
-            //        _errorOccured = YES;
             self.alert = [[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
                                                    delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [self.alert show];
@@ -113,7 +112,7 @@ static NSString *const APP_ID = @"4119359";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    NSLog(@"- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil");
+//    NSLog(@"- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     return self;
@@ -121,7 +120,7 @@ static NSString *const APP_ID = @"4119359";
 
 - (void)viewDidLoad
 {
-    NSLog(@"- (void)viewDidLoad");
+//    NSLog(@"- (void)viewDidLoad");
     [super viewDidLoad];
     
     [[self trackTitle] addSubview:[self loadingIndicator]];
@@ -207,7 +206,7 @@ static NSString *const APP_ID = @"4119359";
 
 - (void)authorize
 {
-    NSLog(@"- (void)authorize");
+//    NSLog(@"- (void)authorize");
     [VKSdk authorize:@[VK_PER_AUDIO, VK_PER_OFFLINE] revokeAccess:YES];
 }
 
@@ -238,37 +237,37 @@ static NSString *const APP_ID = @"4119359";
 }
 
 - (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
-    NSLog(@"- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError");
+//    NSLog(@"- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError");
 	VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
 	[vc presentIn:self];
     
 }
 
 - (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken {
-    NSLog(@"- (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken");
+//    NSLog(@"- (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken");
 	[self authorize];
     
 }
 
 - (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken {
-    NSLog(@"- (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken");
+//    NSLog(@"- (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken");
 	[newToken saveTokenToDefaults:TOKEN_KEY];
     _hasAccess = YES;
 }
 
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
-    NSLog(@"- (void)vkSdkShouldPresentViewController:(UIViewController *)controller");
+//    NSLog(@"- (void)vkSdkShouldPresentViewController:(UIViewController *)controller");
 	[self presentViewController:controller animated:YES completion:nil];
     
 }
 
 - (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token {
-    NSLog(@"- (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token");
+//    NSLog(@"- (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token");
     _hasAccess = YES;
 }
 
 - (void)vkSdkUserDeniedAccess:(VKError *)authorizationError {
-    NSLog(@"- (void)vkSdkUserDeniedAccess:(VKError *)authorizationError");
+//    NSLog(@"- (void)vkSdkUserDeniedAccess:(VKError *)authorizationError");
 	[[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 }
 
@@ -286,9 +285,9 @@ static NSString *const APP_ID = @"4119359";
                 
                 [self.loadingIndicator startAnimating];
                 
-                request.progressBlock = ^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {
-                    NSLog(@"loaded: %lld from: %lld", bytesLoaded, bytesTotal);
-                };
+//                request.progressBlock = ^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {
+//                    NSLog(@"loaded: %lld from: %lld", bytesLoaded, bytesTotal);
+//                };
                 
                 [request executeWithResultBlock:^(VKResponse * response) {
                     [self.loadingIndicator stopAnimating];
@@ -298,7 +297,7 @@ static NSString *const APP_ID = @"4119359";
                     } else {
                         _hasTrackList = YES;
                         _firstPlay = NO;
-                        NSLog(@"Json result: %@", response.json);
+//                        NSLog(@"Json result: %@", response.json);
                         self.musicList = [response.json objectForKey:@"items"];
                         [self nextTrack];
                     }
@@ -313,7 +312,7 @@ static NSString *const APP_ID = @"4119359";
                             [self errorHandle];
                         }
                     } else {
-                        NSLog(@"VK error: %@", error.apiError);
+//                        NSLog(@"VK error: %@", error.apiError);
                         _gettingTrackList = NO;
                         [self.loadingIndicator stopAnimating];
                         [self errorHandle];
