@@ -24,6 +24,7 @@
 @property (getter = isWhite) BOOL color;
 @property (nonatomic, setter = play:) BOOL isPlayed;
 @property (nonatomic) BOOL firstPlay;
+@property (strong, nonatomic) UIAlertView *alert;
 
 @property (retain, nonatomic) IBOutlet UILabel *trackTitle;
 @property (retain, nonatomic) IBOutlet UILabel *artistTitle;

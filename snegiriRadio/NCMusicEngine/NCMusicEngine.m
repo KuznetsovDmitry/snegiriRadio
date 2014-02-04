@@ -317,14 +317,14 @@
 
 - (void)setPlayState:(NCMusicEnginePlayState)playState {
     _playState = playState;
-    if (_playState == NCMusicEnginePlayStateEnded) {
-       BOOL success =[[NSFileManager defaultManager] removeItemAtPath:_localFilePath error:nil];
-        if (success) {
-            NSLog(@"LocalFile deleted!");
-        } else {
-            NSLog(@"LocalFle NOT DELETED!!!");
-        }
-    }
+//    if (_playState == NCMusicEnginePlayStateEnded) {
+//       BOOL success =[[NSFileManager defaultManager] removeItemAtPath:_localFilePath error:nil];
+//        if (success) {
+//            NSLog(@"LocalFile deleted!");
+//        } else {
+//            NSLog(@"LocalFle NOT DELETED!!!");
+//        }
+//    }
     
   if (self.delegate &&
       [self.delegate conformsToProtocol:@protocol(NCMusicEngineDelegate)] &&

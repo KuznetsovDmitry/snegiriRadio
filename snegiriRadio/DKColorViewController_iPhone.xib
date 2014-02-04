@@ -15,8 +15,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHR-Py-I5e">
-                    <rect key="frame" x="23" y="211" width="133" height="133"/>
+                    <rect key="frame" x="23" y="218" width="133" height="133"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="133" id="92X-pp-r6V"/>
+                        <constraint firstAttribute="height" constant="133" id="hgK-Hx-EWu"/>
+                    </constraints>
                     <state key="normal" image="color_white_iphone.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -25,8 +29,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzq-8Q-gm5">
-                    <rect key="frame" x="167" y="211" width="133" height="133"/>
+                    <rect key="frame" x="167" y="218" width="133" height="133"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="133" id="5Ef-IJ-PUZ"/>
+                        <constraint firstAttribute="height" constant="133" id="wGz-wt-fPX"/>
+                    </constraints>
                     <state key="normal" image="color_black_iphone.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -35,27 +43,28 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЦВЕТ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umM-Ap-hJ0">
-                    <rect key="frame" x="0.0" y="120" width="320" height="35"/>
+                    <rect key="frame" x="0.0" y="127" width="320" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="IVS-yH-X8u"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="30"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="umM-Ap-hJ0" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="3SP-Bk-cNz"/>
-                <constraint firstItem="umM-Ap-hJ0" firstAttribute="top" secondItem="1" secondAttribute="top" constant="120" id="JS7-Ad-LWU"/>
-                <constraint firstItem="pzq-8Q-gm5" firstAttribute="height" secondItem="fHR-Py-I5e" secondAttribute="height" id="T08-Er-3xE"/>
-                <constraint firstAttribute="trailing" secondItem="pzq-8Q-gm5" secondAttribute="trailing" constant="20" symbolic="YES" id="WyP-c4-UWq"/>
-                <constraint firstItem="pzq-8Q-gm5" firstAttribute="leading" secondItem="fHR-Py-I5e" secondAttribute="trailing" constant="11" id="aWA-Nf-Cqg"/>
-                <constraint firstAttribute="trailing" secondItem="umM-Ap-hJ0" secondAttribute="trailing" id="i8M-d2-XdM"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pzq-8Q-gm5" secondAttribute="trailing" constant="20" id="mov-Rg-uKe"/>
-                <constraint firstItem="pzq-8Q-gm5" firstAttribute="width" secondItem="fHR-Py-I5e" secondAttribute="width" id="uWB-7u-0sA"/>
-                <constraint firstItem="fHR-Py-I5e" firstAttribute="top" secondItem="umM-Ap-hJ0" secondAttribute="bottom" constant="56" id="wZL-Tu-PJ3"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fHR-Py-I5e" secondAttribute="bottom" constant="30" id="y0S-il-fHi"/>
-                <constraint firstItem="pzq-8Q-gm5" firstAttribute="top" secondItem="umM-Ap-hJ0" secondAttribute="bottom" constant="56" id="zen-Cf-JGo"/>
-                <constraint firstItem="pzq-8Q-gm5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fHR-Py-I5e" secondAttribute="trailing" priority="501" constant="11" id="zgE-0W-tNy"/>
-                <constraint firstItem="fHR-Py-I5e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1" secondAttribute="leading" constant="20" id="zhx-rP-KQq"/>
+                <constraint firstItem="umM-Ap-hJ0" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="CPX-ch-URH"/>
+                <constraint firstAttribute="centerY" secondItem="fHR-Py-I5e" secondAttribute="centerY" id="FnH-1N-7SW"/>
+                <constraint firstItem="fHR-Py-I5e" firstAttribute="height" secondItem="pzq-8Q-gm5" secondAttribute="height" id="L2u-g7-eLx"/>
+                <constraint firstAttribute="trailing" secondItem="umM-Ap-hJ0" secondAttribute="trailing" id="Lz7-rk-TNQ"/>
+                <constraint firstItem="fHR-Py-I5e" firstAttribute="width" secondItem="pzq-8Q-gm5" secondAttribute="width" id="RXs-dq-aoX"/>
+                <constraint firstItem="umM-Ap-hJ0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" constant="40" id="VYe-sr-Y6t"/>
+                <constraint firstAttribute="centerX" secondItem="fHR-Py-I5e" secondAttribute="centerX" constant="70" id="aYk-S7-rgn"/>
+                <constraint firstItem="pzq-8Q-gm5" firstAttribute="top" secondItem="umM-Ap-hJ0" secondAttribute="bottom" priority="646" constant="56" id="c6p-Pf-Y7G"/>
+                <constraint firstAttribute="centerX" secondItem="pzq-8Q-gm5" secondAttribute="centerX" constant="-73" id="gcS-Ta-3zB"/>
+                <constraint firstAttribute="centerY" secondItem="pzq-8Q-gm5" secondAttribute="centerY" id="rRw-aj-SVl"/>
+                <constraint firstItem="fHR-Py-I5e" firstAttribute="centerX" secondItem="pzq-8Q-gm5" secondAttribute="centerX" constant="-144" id="vRr-Z7-81y"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

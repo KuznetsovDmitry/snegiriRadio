@@ -8,15 +8,20 @@
 
 #import "DKMainViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPMediaItem.h>
 
 static NSString *const TOKEN_KEY = @"my_application_access_token";
 static NSString *const APP_ID = @"4119359";
 
-@interface DKMainViewController () <NCMusicEngineDelegate> {
+@interface DKMainViewController () <NCMusicEngineDelegate, UIAlertViewDelegate> {
     BOOL _hasTrackList;
     BOOL _gettingTrackList;
     BOOL _errorOccured;
     int _errorsCount;
+    BOOL _hasAccess;
+    BOOL _firstPlay;
+    BOOL _wasError;
 }
 
 - (void)authorize;
@@ -33,13 +38,45 @@ static NSString *const APP_ID = @"4119359";
 - (void)errorHandle {
     [self play:NO];
     [self setCentralButton:YES];
-    if (!_errorOccured) {
-        _errorOccured = YES;
-        [self reset];
-        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
-                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-
+    if (_errorOccured) {
+        if (self.alert == nil) {
+            _wasError = YES;
+            //        _errorOccured = YES;
+            self.alert = [[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
+                                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [self.alert show];
+        }
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    self.alert = nil;
+    _errorOccured = NO;
+    [self reset];
+}
+
+- (void)reset {
+    [self setCentralButton:YES];
+    [self.trackTitle setText:@""];
+    [self.artistTitle setText:@""];
+    
+    
+    NSArray *keys = [NSArray arrayWithObjects:
+                     MPMediaItemPropertyTitle,
+                     MPMediaItemPropertyArtist,
+                     MPNowPlayingInfoPropertyPlaybackRate,
+                     nil];
+    NSArray *values = [NSArray arrayWithObjects:
+                       @"",
+                       @"",
+                       [NSNumber numberWithInt:1],
+                       nil];
+    NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
+    
+    _isPlayed = NO;
+    _gettingTrackList = NO;
+    _errorsCount = 0;
 }
 
 - (void)setCentralButton:(BOOL)playButton {
@@ -74,25 +111,10 @@ static NSString *const APP_ID = @"4119359";
     }
 }
 
-- (void)reset {
-    [self setCentralButton:YES];
-    [self.trackTitle setText:@""];
-    [self.artistTitle setText:@""];
-    _isPlayed = NO;
-//    _player = [NCMusicEngine new];
-//    _player.delegate = self;
-//    _isPlayed = NO;
-    _gettingTrackList = NO;
-    _errorsCount = 0;
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     NSLog(@"- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
     
     return self;
 }
@@ -101,6 +123,8 @@ static NSString *const APP_ID = @"4119359";
 {
     NSLog(@"- (void)viewDidLoad");
     [super viewDidLoad];
+    
+    [[self trackTitle] addSubview:[self loadingIndicator]];
     
     if (![self isWhite]) {
         self.view.backgroundColor = [UIColor blackColor];
@@ -127,12 +151,6 @@ static NSString *const APP_ID = @"4119359";
         }
     }
     
-    VKAccessToken *token =[VKAccessToken tokenFromDefaults:TOKEN_KEY];
-    [VKSdk initializeWithDelegate:self andAppId:APP_ID andCustomToken:[VKAccessToken tokenFromDefaults:TOKEN_KEY]];
-    if (token == nil) {
-        [self authorize];
-    }
-    
     _player = [NCMusicEngine new];
     _player.delegate = self;
     _isPlayed = NO;
@@ -141,9 +159,17 @@ static NSString *const APP_ID = @"4119359";
     _gettingTrackList = NO;
     _errorsCount = 0;
     _errorOccured = NO;
-//    _attempts = 0;
+    _hasAccess = NO;
+    _firstPlay = YES;
+    _wasError = NO;
     
-//    [[self player] volume:0.5f];
+    VKAccessToken *token =[VKAccessToken tokenFromDefaults:TOKEN_KEY];
+    [VKSdk initializeWithDelegate:self
+                         andAppId:APP_ID
+                   andCustomToken:[VKAccessToken tokenFromDefaults:TOKEN_KEY]];
+    if (token == nil) {
+        [self authorize];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -192,7 +218,7 @@ static NSString *const APP_ID = @"4119359";
     } else {
         aboutController = [[DKAboutViewController alloc] initWithNibName:@"DKAboutViewController_iPad" bundle:nil];
     }
-
+    
     aboutController.delegate = self;
     aboutController.color = _color;
 	
@@ -227,7 +253,7 @@ static NSString *const APP_ID = @"4119359";
 - (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken {
     NSLog(@"- (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken");
 	[newToken saveTokenToDefaults:TOKEN_KEY];
-    
+    _hasAccess = YES;
 }
 
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
@@ -238,84 +264,78 @@ static NSString *const APP_ID = @"4119359";
 
 - (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token {
     NSLog(@"- (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token");
-
+    _hasAccess = YES;
 }
 
 - (void)vkSdkUserDeniedAccess:(VKError *)authorizationError {
     NSLog(@"- (void)vkSdkUserDeniedAccess:(VKError *)authorizationError");
 	[[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-    
 }
 
 - (IBAction)playButtonPressed:(id)sender {
-    if (!_hasTrackList) {
-        //ПОЛУЧЕНИЕ ТРЕК_ЛИСТА
-        [self setCentralButton:NO];
-        if (!_gettingTrackList) {
-            _gettingTrackList = YES;
-            VKRequest *request = [VKRequest requestWithMethod:@"audio.get"
-                                                andParameters:@{VK_API_OWNER_ID : @"-58215044",
-                                                                @"need_user": @"0",
-                                                                @"count"    : @"0"}
-                                                andHttpMethod:@"GET"];
-            
-            [self.loadingIndicator startAnimating];
-            
-            request.progressBlock = ^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {
-                NSLog(@"loaded: %lld from: %lld", bytesLoaded, bytesTotal);
-            };
-            
-            [request executeWithResultBlock:^(VKResponse * response) {
-                [self.loadingIndicator stopAnimating];
-                if (response.json == nil) {
-                    [self errorHandle];
-//                    [self reset];
-//                    [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
-//                                               delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                } else {
-                    _hasTrackList = YES;
-                    NSLog(@"Json result: %@", response.json);
-                    self.musicList = [response.json objectForKey:@"items"];
-                    [self nextTrack];
-                }
-            } errorBlock:^(VKError *error) {
-//                ++_errorsCount;
-//                if (_errorsCount < 30) {
-                if (error.errorCode != VK_API_ERROR) {
-                    [error.request repeat];
-                } else {
-                    NSLog(@"VK error: %@", error.apiError);
-                    [self authorize];
-                    [self setCentralButton:YES];
-                    [self.loadingIndicator stopAnimating];
-                    [self errorHandle];
-                }
-//                    NSLog(@"ERROR CODE: %d", error.errorCode);
-//                    [error.request repeat];
-//                } else {
-                
-                
-//                    [self reset];
-//                    [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
-//                                               delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//                }
-            }];
-        }
-    } else if (!_errorOccured) {
-            if ([self isPlayed]) {
-                [self setCentralButton:YES];
-                [self.player pause];
-            } else {
+    if (_hasAccess) {
+        if (_firstPlay) {
+            if (!_gettingTrackList) {
                 [self setCentralButton:NO];
-                [self.player resume];
+                _gettingTrackList = YES;
+                VKRequest *request = [VKRequest requestWithMethod:@"audio.get"
+                                                    andParameters:@{VK_API_OWNER_ID : @"-58215044",
+                                                                    @"need_user": @"0",
+                                                                    @"count"    : @"0"}
+                                                    andHttpMethod:@"GET"];
+                
+                [self.loadingIndicator startAnimating];
+                
+                request.progressBlock = ^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {
+                    NSLog(@"loaded: %lld from: %lld", bytesLoaded, bytesTotal);
+                };
+                
+                [request executeWithResultBlock:^(VKResponse * response) {
+                    [self.loadingIndicator stopAnimating];
+                    if (response.json == nil) {
+                        _gettingTrackList = NO;
+                        [self errorHandle];
+                    } else {
+                        _hasTrackList = YES;
+                        _firstPlay = NO;
+                        NSLog(@"Json result: %@", response.json);
+                        self.musicList = [response.json objectForKey:@"items"];
+                        [self nextTrack];
+                    }
+                } errorBlock:^(VKError *error) {
+                    if (error.errorCode != VK_API_ERROR) {
+                        ++_errorsCount;
+                        if (_errorsCount < 3) {
+                            [error.request repeat];
+                        } else {
+                            _gettingTrackList = NO;
+                            [self.loadingIndicator stopAnimating];
+                            [self errorHandle];
+                        }
+                    } else {
+                        NSLog(@"VK error: %@", error.apiError);
+                        _gettingTrackList = NO;
+                        [self.loadingIndicator stopAnimating];
+                        [self errorHandle];
+                        [self authorize];
+                    }
+                }];
+                
             }
-    } else {
-        _errorOccured = NO;
-        [self setCentralButton:NO];
-        [self nextTrack];
-    }
-    
+        } else if(_wasError ) {
+            _wasError = NO;
+            [self nextTrack];
+        } else if ([self isPlayed]) {
+            [self setCentralButton:YES];
+            [self.player pause];
+        } else {
+            [self setCentralButton:NO];
+            [self.player resume];
+        }
 
+    } else {
+        [self authorize];
+    }
 }
 
 - (IBAction)volumeChanged:(id)sender {
@@ -328,11 +348,25 @@ static NSString *const APP_ID = @"4119359";
         [_player playUrl:[NSURL URLWithString:[obj valueForKey:@"url"]]];
         [self.artistTitle setText:[obj valueForKey:@"artist"]];
         [self.trackTitle setText:[obj valueForKey:@"title"]];
+        [self setCentralButton:NO];
+        
+        NSArray *keys = [NSArray arrayWithObjects:
+                         MPMediaItemPropertyTitle,
+                         MPMediaItemPropertyArtist,
+                         MPNowPlayingInfoPropertyPlaybackRate,
+                         nil];
+        NSArray *values = [NSArray arrayWithObjects:
+                           [obj valueForKey:@"title"],
+                           [obj valueForKey:@"artist"],
+                           [NSNumber numberWithInt:1],
+                           nil];
+        NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
     }
 }
 
 - (void)engine:(NCMusicEngine *)engine didChangePlayState:(NCMusicEnginePlayState)playState {
-
+    
     if (playState == NCMusicEnginePlayStateEnded) {
         [self setCentralButton:YES];
         [self nextTrack];
@@ -343,38 +377,20 @@ static NSString *const APP_ID = @"4119359";
     } else if (playState == NCMusicEnginePlayStatePaused) {
         [self setCentralButton:YES];
         [self play:NO];
-    } else if (playState == NCMusicEnginePlayStateStopped) {
-        [self setCentralButton:YES];
-        [self play:NO];
-//        _errorOccured = YES;
-//        [self reset];
-//        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
-//                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else if (playState == NCMusicEnginePlayStateError) {
         [self setCentralButton:YES];
         [self play:NO];
         [self.player stop];
-//        _errorOccured = YES;
+        _errorOccured = YES;
         [self errorHandle];
-//        [self reset];
-//        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
-//                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
 - (void)engine:(NCMusicEngine *)engine didChangeDownloadState:(NCMusicEngineDownloadState)downloadState {
-//    if (downloadState == NCMusicEngineDownloadStateError) {
-//        [self setCentralButton:YES];
-//        [self play:NO];
-//        _errorOccured = YES;
-//        [self errorHandle];
-    
-        
-        
-//        [self reset];
-//        [[[UIAlertView alloc] initWithTitle:@"Unable To Play" message:@"We can't seem to play Radio at this moment. Please check your internet connection on your device and make sure you are either on a 3G or WiFi connection."
-//                                   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-//    }
+    if (downloadState == NCMusicEngineDownloadStateError) {
+        _errorOccured = YES;
+        [self errorHandle];
+    }
 }
 
 @end
