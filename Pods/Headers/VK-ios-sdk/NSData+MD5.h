@@ -1,1 +1,0 @@
-../../VK-ios-sdk/sdk/sdk/NSData+MD5.h

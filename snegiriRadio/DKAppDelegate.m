@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Kuznetsov Dmitry. All rights reserved.
 //
 
-#import <VKSdk.h>
+#import "VKSdk.h"
 #import "DKAppDelegate.h"
 #import "DKColorViewController.h"
 #import "DKMainViewController.h"

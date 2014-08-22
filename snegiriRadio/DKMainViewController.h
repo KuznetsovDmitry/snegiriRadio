@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <VKSdk.h>
+#import "VKSdk.h"
 #import "DKAboutViewController.h"
 #import "NCMusicEngine.h"
 

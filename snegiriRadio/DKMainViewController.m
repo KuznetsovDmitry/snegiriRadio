@@ -207,7 +207,7 @@ static NSString *const APP_ID = @"4119359";
 - (void)authorize
 {
 //    NSLog(@"- (void)authorize");
-    [VKSdk authorize:@[VK_PER_AUDIO, VK_PER_OFFLINE] revokeAccess:YES];
+    [VKSdk authorize:@[VK_PER_AUDIO, VK_PER_OFFLINE]];
 }
 
 - (IBAction)showAbout:(id)sender {
@@ -236,40 +236,39 @@ static NSString *const APP_ID = @"4119359";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark VKSdkDelegate protocol
+
+- (void)vkSdkReceivedNewToken:(VKAccessToken *)newToken
+{
+	[newToken saveTokenToDefaults:TOKEN_KEY];
+    _hasAccess = YES;
+}
+
 - (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
-//    NSLog(@"- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError");
 	VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
 	[vc presentIn:self];
     
 }
 
 - (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken {
-//    NSLog(@"- (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken");
 	[self authorize];
     
 }
 
-- (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken {
-//    NSLog(@"- (void)vkSdkDidReceiveNewToken:(VKAccessToken *)newToken");
-	[newToken saveTokenToDefaults:TOKEN_KEY];
-    _hasAccess = YES;
-}
-
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
-//    NSLog(@"- (void)vkSdkShouldPresentViewController:(UIViewController *)controller");
 	[self presentViewController:controller animated:YES completion:nil];
     
 }
 
-- (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token {
-//    NSLog(@"- (void)vkSdkDidAcceptUserToken:(VKAccessToken *)token");
+- (void)vkSdkAcceptedUserToken:(VKAccessToken *)token {
     _hasAccess = YES;
 }
 
 - (void)vkSdkUserDeniedAccess:(VKError *)authorizationError {
-//    NSLog(@"- (void)vkSdkUserDeniedAccess:(VKError *)authorizationError");
 	[[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 }
+
+#pragma mark
 
 - (IBAction)playButtonPressed:(id)sender {
     if (_hasAccess) {
@@ -288,7 +287,7 @@ static NSString *const APP_ID = @"4119359";
 //                request.progressBlock = ^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {
 //                    NSLog(@"loaded: %lld from: %lld", bytesLoaded, bytesTotal);
 //                };
-                
+                __block VKRequest *weakRequest = request;
                 [request executeWithResultBlock:^(VKResponse * response) {
                     [self.loadingIndicator stopAnimating];
                     if (response.json == nil) {
@@ -301,11 +300,11 @@ static NSString *const APP_ID = @"4119359";
                         self.musicList = [response.json objectForKey:@"items"];
                         [self nextTrack];
                     }
-                } errorBlock:^(VKError *error) {
-                    if (error.errorCode != VK_API_ERROR) {
+                } errorBlock:^(NSError *error) {
+                    if (error.code != VK_API_ERROR) {
                         ++_errorsCount;
                         if (_errorsCount < 3) {
-                            [error.request repeat];
+                            [weakRequest repeat];
                         } else {
                             _gettingTrackList = NO;
                             [self.loadingIndicator stopAnimating];

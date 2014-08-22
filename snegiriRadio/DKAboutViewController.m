@@ -63,15 +63,39 @@
 }
 
 - (IBAction)vkButtonPressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://vk.com/snegiri_rock"]];
+	NSURL *vkURL = [NSURL URLWithString:@"vk://vk.com/snegiri_rock"];
+	if ([[UIApplication sharedApplication] canOpenURL:vkURL])
+	{
+		[[UIApplication sharedApplication] openURL:vkURL];
+	}
+	else
+	{
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://vk.com/snegiri_rock"]];
+	}
 }
 
 - (IBAction)fbButtonPressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/snegiri.radio"]];
+	NSURL *fbURL = [NSURL URLWithString:@"fb://profile/snegiri.radio"];
+	if ([[UIApplication sharedApplication] canOpenURL:fbURL])
+	{
+		[[UIApplication sharedApplication] openURL:fbURL];
+	}
+	else
+	{
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/snegiri.radio"]];
+	}
 }
 
 - (IBAction)instaButtonPressed:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://instagram.com/snegiri_rock"]];
+	NSURL *instagramURL = [NSURL URLWithString:@"instagram://user?username=snegiri_rock"];
+	if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
+	{
+		[[UIApplication sharedApplication] openURL:instagramURL];
+	}
+	else
+	{
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://instagram.com/snegiri_rock"]];
+	}
 }
 
 @end
